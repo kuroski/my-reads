@@ -6,9 +6,9 @@ before_install:
   - export PATH="$HOME/.yarn/bin:$PATH"
   - npm install -g codeclimate-test-reporter
 cache:
-  yarn
   directories:
     - node_modules
+    - yarn
 script:
   - yarn run build
   - yarn run coverage
