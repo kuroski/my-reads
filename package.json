@@ -22,11 +22,13 @@
   },
   "scripts": {
     "precommit": "lint-staged",
-    "start": "react-scripts start",
+    "start": "cross-env NODE_PATH=src react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom --setupTestFrameworkScriptFile=raf/polyfill",
+    "test": "cross-env NODE_PATH=src react-scripts test --env=jsdom --setupTestFrameworkScriptFile=raf/polyfill --updateSnapshot",
     "eject": "react-scripts eject",
     "coverage": "yarn test -- --coverage"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "cross-env": "^5.0.5"
+  }
 }

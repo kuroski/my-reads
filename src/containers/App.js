@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Book from '../components/Book';
 import './App.css';
 
 class App extends Component {
@@ -48,6 +49,9 @@ class App extends Component {
                   <h2 className="bookshelf-title">Currently Reading</h2>
                   <div className="bookshelf-books">
                     <ol className="books-grid">
+                      <li>
+                        <Book />
+                      </li>
                       <li>
                         <div className="book">
                           <div className="book-top">

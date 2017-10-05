@@ -3,6 +3,7 @@
 [![Test Coverage](https://codeclimate.com/github/kuroski/my-reads/badges/coverage.svg)](https://codeclimate.com/github/kuroski/my-reads/coverage)
 [![Dependency Status](https://david-dm.org/kuroski/my-reads/status.svg)](https://david-dm.org/kuroski/my-reads#info=dependencies)
 [![devDependency Status](https://david-dm.org/kuroski/my-reads/dev-status.svg)](https://david-dm.org/kuroski/my-reads#info=devDependencies)
+[![Heroku](https://kuroski-my-reads.herokuapp.com/?app=heroku-badge)]
 
 # MyReads Project
 

@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Book Component renders correctly 1`] = `
+<h1>
+  Book
+</h1>
+`;
