@@ -24,6 +24,8 @@ ratings:
   - "**.rb"
 exclude_paths:
 - "**/__tests__/**"
-- "src/common/testData.js"
+- "src/index.js"
+- "src/registerServiceWorker.js"
+- "src/setupTests.js"
 - "docs/**"
 JavaScript: true
