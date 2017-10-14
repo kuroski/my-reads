@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Book Component renders correctly 1`] = `
+exports[`SearchPage Container renders correctly 1`] = `
 <div
   className="search-books"
 >
