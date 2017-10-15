@@ -24,8 +24,16 @@ ratings:
   - "**.rb"
 exclude_paths:
 - "**/__tests__/**"
+- "**/__snapshots__/**"
 - "src/index.js"
 - "src/registerServiceWorker.js"
 - "src/setupTests.js"
+- "src/tempPolyfills.js"
+- "common/**"
 - "docs/**"
+- "public/**"
+- "src/icons/**"
+- "**.md"
+- "yarn.lock"
+- "package.json"
 JavaScript: true
