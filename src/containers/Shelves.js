@@ -3,7 +3,7 @@ import BookShelf from '../components/BookShelf';
 
 const Shelves = () => (
   <div>
-    <BookShelf />
+    <BookShelf onMove={(id, shelve) => console.log(id, shelve)} />
     <div className="bookshelf">
       <h2 className="bookshelf-title">Want to Read</h2>
       <div className="bookshelf-books">

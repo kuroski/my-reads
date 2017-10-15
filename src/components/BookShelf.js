@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Book from './Book';
 
 const BookShelf = props => {
-  function renderBooks() {
+  const renderBooks = () => {
     if (!props.books || props.books.length === 0)
       return <li className="empty-message">No books on this shelve</li>;
 
@@ -13,12 +13,12 @@ const BookShelf = props => {
           id={book.id}
           title={book.title}
           authors={book.authors}
-          onMove={(id, shelve) => console.log(id, shelve)}
           coverImage={book.imageLinks.thumbnail}
+          onMove={props.onMove}
         />
       </li>
     ));
-  }
+  };
 
   return (
     <div className="bookshelf">
@@ -31,7 +31,8 @@ const BookShelf = props => {
 };
 
 BookShelf.propTypes = {
-  books: PropTypes.array
+  books: PropTypes.array,
+  onMove: PropTypes.func.isRequired
 };
 
 BookShelf.defaultProps = {

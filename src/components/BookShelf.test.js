@@ -4,6 +4,7 @@ import { shallow } from 'enzyme';
 import BookShelf from './BookShelf';
 import Book from './Book';
 import { testBooks } from '../common/testData';
+import { shelfState } from '../common/shelfState';
 
 describe('BookShelf Container', () => {
   let props;
@@ -14,7 +15,8 @@ describe('BookShelf Container', () => {
 
   beforeAll(() => {
     props = {
-      books: [testBooks.books[0]]
+      books: [testBooks.books[0]],
+      onMove: jest.fn()
     };
   });
 
@@ -52,6 +54,18 @@ describe('BookShelf Container', () => {
     _expectBookRenderedCorrectly(firstBook, testBooks.books[0]);
   });
 
+  it('must pass a bound "onMove" prop', () => {
+    const wrapper = build();
+    const book = wrapper.find(Book).first();
+
+    book.prop('onMove')(book.id, shelfState.CURRENTLY_READING);
+    expect(props.onMove).toHaveBeenCalledTimes(1);
+    expect(props.onMove).toHaveBeenCalledWith(
+      book.id,
+      shelfState.CURRENTLY_READING
+    );
+  });
+
   function _expectBookRenderedCorrectly(book, comparableBook) {
     expect(book.prop('id')).toEqual(comparableBook.id);
     expect(book.prop('title')).toEqual(comparableBook.title);
@@ -59,5 +73,6 @@ describe('BookShelf Container', () => {
     expect(book.prop('coverImage')).toEqual(
       comparableBook.imageLinks.thumbnail
     );
+    expect(book.prop('onMove')).toEqual(props.onMove);
   }
 });
