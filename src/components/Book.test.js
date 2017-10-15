@@ -25,7 +25,7 @@ describe('Book Component', () => {
     };
   });
 
-  it('renders correctly', () => {
+  it('renders Book Component correctly', () => {
     const wrapper = build();
     const BookTree = renderer.create(wrapper[0]).toJSON();
     expect(BookTree).toMatchSnapshot();

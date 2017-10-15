@@ -20,7 +20,7 @@ describe('BookShelf Container', () => {
     };
   });
 
-  it('renders correctly', () => {
+  it('renders BookShelf Container correctly', () => {
     const wrapper = build();
     const BookShelfTree = renderer.create(wrapper[0]).toJSON();
     expect(BookShelfTree).toMatchSnapshot();
