@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Shelves Container renders correctly 1`] = `
+exports[`BookShelf Container renders correctly 1`] = `
 <div
   className="bookshelf"
 >
