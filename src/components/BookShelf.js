@@ -1,22 +1,41 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Book from './Book';
 
-const BookShelf = () => (
-  <div className="bookshelf">
-    <h2 className="bookshelf-title">Currently Reading</h2>
-    <div className="bookshelf-books">
-      <ol className="books-grid">
-        <li>
-          <Book
-            id="PGR2AwAAQBAJ"
-            title="1776"
-            authors={['Test author', 'Daniel']}
-            onMove={(id, shelve) => console.log(id, shelve)}
-            coverImage="http://books.google.com/books/content?id=uu1mC6zWNTwC&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE73pGHfBNSsJG9Y8kRBpmLUft9O4BfItHioHolWNKOdLavw-SLcXADy3CPAfJ0_qMb18RmCa7Ds1cTdpM3dxAGJs8zfCfm8c6ggBIjzKT7XR5FIB53HHOhnsT7a0Cc-PpneWq9zX&source=gbs_api"
-          />
-        </li>
-      </ol>
+const BookShelf = props => {
+  function renderBooks() {
+    if (!props.books || props.books.length === 0)
+      return <li className="empty-message">No books on this shelve</li>;
+
+    return props.books.map(book => (
+      <li key={book.id}>
+        <Book
+          id={book.id}
+          title={book.title}
+          authors={book.authors}
+          onMove={(id, shelve) => console.log(id, shelve)}
+          coverImage={book.imageLinks.thumbnail}
+        />
+      </li>
+    ));
+  }
+
+  return (
+    <div className="bookshelf">
+      <h2 className="bookshelf-title">Currently Reading</h2>
+      <div className="bookshelf-books">
+        <ol className="books-grid">{renderBooks()}</ol>
+      </div>
     </div>
-  </div>
-);
+  );
+};
+
+BookShelf.propTypes = {
+  books: PropTypes.array
+};
+
+BookShelf.defaultProps = {
+  books: []
+};
+
 export default BookShelf;
