@@ -1,0 +1,331 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shelves Container renders App Container correctly 1`] = `
+<div
+  className="app"
+>
+  <div
+    className="list-books"
+  >
+    <div
+      className="list-books-title"
+    >
+      <h1>
+        MyReads
+      </h1>
+    </div>
+    <div
+      className="list-books-content"
+    >
+      <div>
+        <div
+          className="bookshelf"
+        >
+          <h2
+            className="bookshelf-title"
+          >
+            Currently Reading
+          </h2>
+          <div
+            className="bookshelf-books"
+          >
+            <ol
+              className="books-grid"
+            >
+              <li>
+                <div
+                  className="book"
+                >
+                  <div
+                    className="book-top"
+                  >
+                    <img
+                      alt="Book Title 1"
+                      className="book-cover"
+                      height="193"
+                      src="http://img01.jpg"
+                      width="128"
+                    />
+                    <div
+                      className="book-shelf-changer"
+                    >
+                      <select
+                        onChange={[Function]}
+                        value="currentlyReading"
+                      >
+                        <option
+                          disabled={true}
+                          value="none"
+                        >
+                          Move to...
+                        </option>
+                        <option
+                          className="book-shelf-option"
+                          value="currentlyReading"
+                        >
+                          Currently Reading
+                        </option>
+                        <option
+                          className="book-shelf-option"
+                          value="wantToRead"
+                        >
+                          Want to Read
+                        </option>
+                        <option
+                          className="book-shelf-option"
+                          value="read"
+                        >
+                          Read
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                  <div
+                    className="book-title"
+                  >
+                    Book Title 1
+                  </div>
+                  <div
+                    className="book-authors"
+                  >
+                    Author One, Author Two
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div
+                  className="book"
+                >
+                  <div
+                    className="book-top"
+                  >
+                    <img
+                      alt="Book Title 2"
+                      className="book-cover"
+                      height="193"
+                      src="http://img02.jpg"
+                      width="128"
+                    />
+                    <div
+                      className="book-shelf-changer"
+                    >
+                      <select
+                        onChange={[Function]}
+                        value="currentlyReading"
+                      >
+                        <option
+                          disabled={true}
+                          value="none"
+                        >
+                          Move to...
+                        </option>
+                        <option
+                          className="book-shelf-option"
+                          value="currentlyReading"
+                        >
+                          Currently Reading
+                        </option>
+                        <option
+                          className="book-shelf-option"
+                          value="wantToRead"
+                        >
+                          Want to Read
+                        </option>
+                        <option
+                          className="book-shelf-option"
+                          value="read"
+                        >
+                          Read
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                  <div
+                    className="book-title"
+                  >
+                    Book Title 2
+                  </div>
+                  <div
+                    className="book-authors"
+                  >
+                    Mist Misterious
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div
+                  className="book"
+                >
+                  <div
+                    className="book-top"
+                  >
+                    <img
+                      alt="Book Title 3"
+                      className="book-cover"
+                      height="193"
+                      src="http://img03.jpg"
+                      width="128"
+                    />
+                    <div
+                      className="book-shelf-changer"
+                    >
+                      <select
+                        onChange={[Function]}
+                        value="currentlyReading"
+                      >
+                        <option
+                          disabled={true}
+                          value="none"
+                        >
+                          Move to...
+                        </option>
+                        <option
+                          className="book-shelf-option"
+                          value="currentlyReading"
+                        >
+                          Currently Reading
+                        </option>
+                        <option
+                          className="book-shelf-option"
+                          value="wantToRead"
+                        >
+                          Want to Read
+                        </option>
+                        <option
+                          className="book-shelf-option"
+                          value="read"
+                        >
+                          Read
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                  <div
+                    className="book-title"
+                  >
+                    Book Title 3
+                  </div>
+                  <div
+                    className="book-authors"
+                  >
+                    Lucky Guy, Telonious Monk, Rapid Fast
+                  </div>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </div>
+        <div
+          className="bookshelf"
+        >
+          <h2
+            className="bookshelf-title"
+          >
+            Want to Read
+          </h2>
+          <div
+            className="bookshelf-books"
+          >
+            <ol
+              className="books-grid"
+            >
+              <li>
+                <div
+                  className="book"
+                >
+                  <div
+                    className="book-top"
+                  >
+                    <img
+                      alt="Book Title 1"
+                      className="book-cover"
+                      height="193"
+                      src="http://img01.jpg"
+                      width="128"
+                    />
+                    <div
+                      className="book-shelf-changer"
+                    >
+                      <select
+                        onChange={[Function]}
+                        value="wantToRead"
+                      >
+                        <option
+                          disabled={true}
+                          value="none"
+                        >
+                          Move to...
+                        </option>
+                        <option
+                          className="book-shelf-option"
+                          value="currentlyReading"
+                        >
+                          Currently Reading
+                        </option>
+                        <option
+                          className="book-shelf-option"
+                          value="wantToRead"
+                        >
+                          Want to Read
+                        </option>
+                        <option
+                          className="book-shelf-option"
+                          value="read"
+                        >
+                          Read
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                  <div
+                    className="book-title"
+                  >
+                    Book Title 1
+                  </div>
+                  <div
+                    className="book-authors"
+                  >
+                    Author One, Author Two
+                  </div>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </div>
+        <div
+          className="bookshelf"
+        >
+          <h2
+            className="bookshelf-title"
+          >
+            Read
+          </h2>
+          <div
+            className="bookshelf-books"
+          >
+            <ol
+              className="books-grid"
+            >
+              <li
+                className="empty-message"
+              >
+                No books on this shelve
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="open-search"
+    >
+      <a
+        href="/search"
+        onClick={[Function]}
+      >
+        Add a book
+      </a>
+    </div>
+  </div>
+</div>
+`;

@@ -28,7 +28,7 @@ describe('Shelves Container', () => {
     };
   });
 
-  it('renders Shelves Container correctly', () => {
+  it('renders Shelves Component correctly', () => {
     const wrapper = build();
     const ShelvesTree = renderer.create(wrapper[0]).toJSON();
     expect(ShelvesTree).toMatchSnapshot();

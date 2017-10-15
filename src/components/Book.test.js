@@ -22,6 +22,7 @@ describe('Book Component', () => {
       title: book.title,
       authors: book.authors,
       shelves: testShelvesOptions.shelves,
+      selectedShelve: testShelvesOptions.shelves[1].value,
       onMove
     };
   });
@@ -70,7 +71,11 @@ describe('Book Component', () => {
       target: { value: shelfState.CURRENTLY_READING }
     });
     expect(onMove).toHaveBeenCalledTimes(1);
-    expect(onMove).toHaveBeenCalledWith(book.id, shelfState.CURRENTLY_READING);
+    expect(onMove).toHaveBeenCalledWith(
+      book.id,
+      props.selectedShelve,
+      shelfState.CURRENTLY_READING
+    );
   });
 
   it('renders a options list of shelves', () => {
@@ -86,7 +91,6 @@ describe('Book Component', () => {
   });
 
   it('set option when "shelfSelected" prop is passed', () => {
-    props.selectedShelve = testShelvesOptions.shelves[1].value;
     const wrapper = build();
     expect(wrapper.find('select').prop('value')).toEqual(props.selectedShelve);
   });

@@ -30,7 +30,8 @@ const Shelves = props => {
 };
 
 Shelves.propTypes = {
-  shelves: PropTypes.array
+  shelves: PropTypes.array,
+  onMove: PropTypes.func.isRequired
 };
 
 Shelves.defaultProps = {
