@@ -75,10 +75,10 @@ describe('Shelves Container', () => {
   });
 
   function _expectBookShelveRenderedCorrectly(bookShelf, comparableBookShelf) {
-    expect(bookShelf.prop('title')).toEqual(comparableBookShelf.title);
+    expect(bookShelf.prop('name')).toEqual(comparableBookShelf.name);
     expect(bookShelf.prop('books')).toEqual(comparableBookShelf.books);
-    expect(bookShelf.prop('shelveId')).toEqual(comparableBookShelf.value);
     expect(bookShelf.prop('onMove')).toEqual(props.onMove);
+    expect(bookShelf.prop('shelveId')).toEqual(comparableBookShelf.value);
     expect(bookShelf.prop('shelves')).toEqual(shelvesOptions);
   }
 });

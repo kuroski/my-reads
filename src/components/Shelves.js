@@ -3,14 +3,12 @@ import PropTypes from 'prop-types';
 import BookShelf from './BookShelf';
 
 const Shelves = props => {
-  function shelvesOptions() {
-    return props.shelves.map(shelve => {
-      return {
-        name: shelve.name,
-        value: shelve.value
-      };
-    });
-  }
+  const shelvesOptions = props.shelves.map(shelve => {
+    return {
+      name: shelve.name,
+      value: shelve.value
+    };
+  });
 
   const renderBookSHelves = () => {
     if (!props.shelves || props.shelves.length === 0)
@@ -23,7 +21,7 @@ const Shelves = props => {
         books={shelve.books}
         onMove={props.onMove}
         shelveId={shelve.value}
-        shelves={shelvesOptions()}
+        shelves={shelvesOptions}
       />
     ));
   };
