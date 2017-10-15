@@ -1,11 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { shelfState } from '../common/shelfState';
 
 const Book = props => {
   const onMove = e => {
     props.onMove(props.id, e.target.value);
   };
+
+  const renderedOptions = props.shelves.map(shelve => (
+    <option
+      key={shelve.value}
+      value={shelve.value}
+      className="book-shelf-option"
+    >
+      {shelve.name}
+    </option>
+  ));
 
   return (
     <div className="book">
@@ -18,16 +27,11 @@ const Book = props => {
           alt={props.title}
         />
         <div className="book-shelf-changer">
-          <select onChange={onMove}>
+          <select onChange={onMove} value={props.selectedShelve}>
             <option value="none" disabled>
               Move to...
             </option>
-            <option value={shelfState.CURRENTLY_READING}>
-              Currently Reading
-            </option>
-            <option value={shelfState.WANT_TO_READ}>Want to Read</option>
-            <option value={shelfState.READ}>Read</option>
-            <option value={shelfState.NONE}>None</option>
+            {renderedOptions}
           </select>
         </div>
       </div>
@@ -42,11 +46,20 @@ Book.propTypes = {
   title: PropTypes.string.isRequired,
   authors: PropTypes.array.isRequired,
   onMove: PropTypes.func.isRequired,
-  coverImage: PropTypes.string
+  coverImage: PropTypes.string,
+  shelves: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string,
+      value: PropTypes.string
+    })
+  ),
+  selectedShelve: PropTypes.string
 };
 
 Book.defaultProps = {
-  coverImage: 'http://i.imgur.com/J5LVHEL.jpg'
+  coverImage: 'http://i.imgur.com/J5LVHEL.jpg',
+  shelves: [],
+  selectedShelve: ''
 };
 
 export default Book;

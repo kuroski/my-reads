@@ -8,8 +8,16 @@ import { shelfState } from '../common/shelfState';
 
 describe('Shelves Container', () => {
   let props;
+  let shelvesOptions;
 
   const build = () => {
+    shelvesOptions = props.shelves.map(shelve => {
+      return {
+        name: shelve.name,
+        value: shelve.value
+      };
+    });
+
     return shallow(<Shelves {...props} />);
   };
 
@@ -69,6 +77,8 @@ describe('Shelves Container', () => {
   function _expectBookShelveRenderedCorrectly(bookShelf, comparableBookShelf) {
     expect(bookShelf.prop('title')).toEqual(comparableBookShelf.title);
     expect(bookShelf.prop('books')).toEqual(comparableBookShelf.books);
+    expect(bookShelf.prop('shelveId')).toEqual(comparableBookShelf.value);
     expect(bookShelf.prop('onMove')).toEqual(props.onMove);
+    expect(bookShelf.prop('shelves')).toEqual(shelvesOptions);
   }
 });

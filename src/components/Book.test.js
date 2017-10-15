@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
 import Book from './Book';
-import { testBooks } from '../common/testData';
+import { testBooks, testShelvesOptions } from '../common/testData';
 import { shelfState } from '../common/shelfState';
 
 describe('Book Component', () => {
@@ -21,6 +21,7 @@ describe('Book Component', () => {
       id: book.id,
       title: book.title,
       authors: book.authors,
+      shelves: testShelvesOptions.shelves,
       onMove
     };
   });
@@ -70,5 +71,23 @@ describe('Book Component', () => {
     });
     expect(onMove).toHaveBeenCalledTimes(1);
     expect(onMove).toHaveBeenCalledWith(book.id, shelfState.CURRENTLY_READING);
+  });
+
+  it('renders a options list of shelves', () => {
+    const wrapper = build();
+    const options = wrapper.find('.book-shelf-option');
+
+    expect(options).toHaveLength(testShelvesOptions.shelves.length);
+    options.forEach((option, index) => {
+      const optionComparable = testShelvesOptions.shelves[index];
+      expect(option.prop('value')).toEqual(optionComparable.value);
+      expect(option.prop('children')).toEqual(optionComparable.name);
+    });
+  });
+
+  it('set option when "shelfSelected" prop is passed', () => {
+    props.selectedShelve = testShelvesOptions.shelves[1].value;
+    const wrapper = build();
+    expect(wrapper.find('select').prop('value')).toEqual(props.selectedShelve);
   });
 });

@@ -15,6 +15,8 @@ const BookShelf = props => {
           authors={book.authors}
           coverImage={book.imageLinks.thumbnail}
           onMove={props.onMove}
+          selectedShelve={props.shelveId}
+          shelves={props.shelves}
         />
       </li>
     ));
@@ -22,7 +24,7 @@ const BookShelf = props => {
 
   return (
     <div className="bookshelf">
-      <h2 className="bookshelf-title">{props.title}</h2>
+      <h2 className="bookshelf-title">{props.name}</h2>
       <div className="bookshelf-books">
         <ol className="books-grid">{renderBooks()}</ol>
       </div>
@@ -31,13 +33,22 @@ const BookShelf = props => {
 };
 
 BookShelf.propTypes = {
-  title: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  shelveId: PropTypes.string,
   onMove: PropTypes.func.isRequired,
-  books: PropTypes.array
+  books: PropTypes.array,
+  shelves: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string,
+      value: PropTypes.string
+    })
+  )
 };
 
 BookShelf.defaultProps = {
-  books: []
+  books: [],
+  shelves: [],
+  shelveId: ''
 };
 
 export default BookShelf;

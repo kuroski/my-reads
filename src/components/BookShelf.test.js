@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
 import BookShelf from './BookShelf';
 import Book from './Book';
-import { testBooks } from '../common/testData';
+import { testBooks, testShelvesOptions } from '../common/testData';
 import { shelfState } from '../common/shelfState';
 
 describe('BookShelf Container', () => {
@@ -15,8 +15,10 @@ describe('BookShelf Container', () => {
 
   beforeAll(() => {
     props = {
-      title: 'Currently Reading',
+      name: 'Currently Reading',
       books: [testBooks.books[0]],
+      shelves: testShelvesOptions.shelves,
+      shelveId: testShelvesOptions.shelves[0].value,
       onMove: jest.fn()
     };
   });
@@ -29,7 +31,7 @@ describe('BookShelf Container', () => {
 
   it('must show the BookShelf title', () => {
     const wrapper = build();
-    expect(wrapper.contains(props.title)).toBe(true);
+    expect(wrapper.contains(props.name)).toBe(true);
   });
 
   it('renders a Book component when a book is passed', () => {
@@ -79,6 +81,7 @@ describe('BookShelf Container', () => {
     expect(book.prop('coverImage')).toEqual(
       comparableBook.imageLinks.thumbnail
     );
-    expect(book.prop('onMove')).toEqual(props.onMove);
+    expect(book.prop('shelves')).toEqual(props.shelves);
+    expect(book.prop('selectedShelve')).toEqual(props.shelveId);
   }
 });

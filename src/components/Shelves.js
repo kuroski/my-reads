@@ -3,16 +3,27 @@ import PropTypes from 'prop-types';
 import BookShelf from './BookShelf';
 
 const Shelves = props => {
+  function shelvesOptions() {
+    return props.shelves.map(shelve => {
+      return {
+        name: shelve.name,
+        value: shelve.value
+      };
+    });
+  }
+
   const renderBookSHelves = () => {
     if (!props.shelves || props.shelves.length === 0)
       return <div className="empty-message">Oops, no shelve created</div>;
 
     return props.shelves.map(shelve => (
       <BookShelf
-        key={shelve.title}
-        title={shelve.title}
+        key={shelve.name}
+        name={shelve.name}
         books={shelve.books}
         onMove={props.onMove}
+        shelveId={shelve.value}
+        shelves={shelvesOptions()}
       />
     ));
   };
