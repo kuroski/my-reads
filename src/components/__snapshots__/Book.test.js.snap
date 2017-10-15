@@ -8,15 +8,18 @@ exports[`Book Component renders correctly 1`] = `
     className="book-top"
   >
     <img
+      alt="Book Title 1"
       className="book-cover"
       height="193"
-      src="http://i.imgur.com/J5LVHEL.jpg"
+      src="http://img01.jpg"
       width="128"
     />
     <div
       className="book-shelf-changer"
     >
-      <select>
+      <select
+        onChange={[Function]}
+      >
         <option
           disabled={true}
           value="none"
@@ -49,12 +52,12 @@ exports[`Book Component renders correctly 1`] = `
   <div
     className="book-title"
   >
-    To Kill a Mockingbird
+    Book Title 1
   </div>
   <div
     className="book-authors"
   >
-    Harper Lee
+    Author One, Author Two
   </div>
 </div>
 `;
