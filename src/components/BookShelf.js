@@ -22,7 +22,7 @@ const BookShelf = props => {
 
   return (
     <div className="bookshelf">
-      <h2 className="bookshelf-title">Currently Reading</h2>
+      <h2 className="bookshelf-title">{props.title}</h2>
       <div className="bookshelf-books">
         <ol className="books-grid">{renderBooks()}</ol>
       </div>
@@ -31,8 +31,9 @@ const BookShelf = props => {
 };
 
 BookShelf.propTypes = {
-  books: PropTypes.array,
-  onMove: PropTypes.func.isRequired
+  title: PropTypes.string.isRequired,
+  onMove: PropTypes.func.isRequired,
+  books: PropTypes.array
 };
 
 BookShelf.defaultProps = {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
 import SearchPage from './SearchPage';
-import Shelves from './Shelves';
+import Shelves from '../components/Shelves';
 import './App.css';
 
 class App extends Component {
@@ -18,7 +18,7 @@ class App extends Component {
                 <h1>MyReads</h1>
               </div>
               <div className="list-books-content">
-                <Shelves />
+                <Shelves shelves={[]} />
               </div>
 
               <div className="open-search">

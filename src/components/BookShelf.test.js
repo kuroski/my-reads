@@ -15,6 +15,7 @@ describe('BookShelf Container', () => {
 
   beforeAll(() => {
     props = {
+      title: 'Currently Reading',
       books: [testBooks.books[0]],
       onMove: jest.fn()
     };
@@ -24,6 +25,11 @@ describe('BookShelf Container', () => {
     const wrapper = build();
     const BookShelfTree = renderer.create(wrapper[0]).toJSON();
     expect(BookShelfTree).toMatchSnapshot();
+  });
+
+  it('must show the BookShelf title', () => {
+    const wrapper = build();
+    expect(wrapper.contains(props.title)).toBe(true);
   });
 
   it('renders a Book component when a book is passed', () => {

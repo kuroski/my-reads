@@ -29,4 +29,21 @@ const testBooks = {
   ]
 };
 
-export { testBooks };
+const testShelves = {
+  shelves: [
+    {
+      title: 'Currently Reading',
+      books: testBooks.books
+    },
+    {
+      title: 'Want to Read',
+      books: [testBooks.books[0]]
+    },
+    {
+      title: 'Read',
+      books: []
+    }
+  ]
+};
+
+export { testBooks, testShelves };
