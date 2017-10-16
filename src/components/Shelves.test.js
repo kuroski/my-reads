@@ -3,27 +3,20 @@ import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
 import Shelves from './Shelves';
 import BookShelf from './BookShelf';
-import { testShelves } from '../common/testData';
+import { testBooks, testShelves } from '../common/testData';
 import { shelfState } from '../common/shelfState';
 
 describe('Shelves Container', () => {
   let props;
-  let shelvesOptions;
 
   const build = () => {
-    shelvesOptions = props.shelves.map(shelve => {
-      return {
-        name: shelve.name,
-        value: shelve.value
-      };
-    });
-
     return shallow(<Shelves {...props} />);
   };
 
   beforeAll(() => {
     props = {
       shelves: [testShelves.shelves[0]],
+      books: testBooks.books,
       onMove: jest.fn()
     };
   });
@@ -35,12 +28,11 @@ describe('Shelves Container', () => {
   });
 
   it('renders a BookShelf component when a shelve is passed', () => {
-    const firstBookShelve = testShelves.shelves[0];
     const wrapper = build();
     const bookShelf = wrapper.find(BookShelf);
 
     expect(bookShelf).toHaveLength(1);
-    _expectBookShelveRenderedCorrectly(bookShelf, firstBookShelve);
+    _expectBookShelveRenderedCorrectly(bookShelf);
   });
 
   it('renders a empty shelve message when no shelves prop or empty array is passed', () => {
@@ -59,7 +51,7 @@ describe('Shelves Container', () => {
     const firstBookShelf = wrapper.find(BookShelf).first();
 
     expect(wrapper.find(BookShelf)).toHaveLength(testShelves.shelves.length);
-    _expectBookShelveRenderedCorrectly(firstBookShelf, testShelves.shelves[0]);
+    _expectBookShelveRenderedCorrectly(firstBookShelf);
   });
 
   it('must pass a bound "onMove" prop', () => {
@@ -74,11 +66,13 @@ describe('Shelves Container', () => {
     );
   });
 
-  function _expectBookShelveRenderedCorrectly(bookShelf, comparableBookShelf) {
+  function _expectBookShelveRenderedCorrectly(bookShelf) {
+    const comparableBookShelf = testShelves.shelves[0];
+
     expect(bookShelf.prop('name')).toEqual(comparableBookShelf.name);
-    expect(bookShelf.prop('books')).toEqual(comparableBookShelf.books);
-    expect(bookShelf.prop('onMove')).toEqual(props.onMove);
     expect(bookShelf.prop('shelveId')).toEqual(comparableBookShelf.value);
-    expect(bookShelf.prop('shelves')).toEqual(shelvesOptions);
+    expect(bookShelf.prop('shelves')).toEqual(props.shelves);
+    expect(bookShelf.prop('books')).toEqual(props.books);
+    expect(bookShelf.prop('onMove')).toEqual(props.onMove);
   }
 });

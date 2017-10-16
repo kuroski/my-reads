@@ -1,17 +1,20 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { shallow } from 'enzyme';
 import { MemoryRouter } from 'react-router-dom';
+import { mount } from 'enzyme';
 import App from './App';
-import { testShelves } from '../common/testData';
+import Shelves from '../components/Shelves';
 import { shelfState } from '../common/shelfState';
+import { testBooks } from '../common/testData';
 
 describe('Shelves Container', () => {
-  let wrapper;
-
-  beforeAll(() => {
-    wrapper = shallow(<App />);
-  });
+  const build = () => {
+    return mount(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>
+    );
+  };
 
   it('renders App Container correctly', () => {
     const ShelvesTree = renderer
@@ -24,26 +27,13 @@ describe('Shelves Container', () => {
     expect(ShelvesTree).toMatchSnapshot();
   });
 
-  // it('must pass a bound "onMove" prop to Shelves component', () => {
-  // TODO: Fix this test
-  // const instance = wrapper.instance();
-  // const spy = jest.spyOn(instance, 'onMove');
-  // const shelves = wrapper.find(Shelves).first();
-  // shelves.prop('onMove')('abc', shelfState.CURRENTLY_READING);
-  // expect(spy).toHaveBeenCalledTimes(1);
-  // expect(spy).toHaveBeenCalledWith('abc', shelfState.CURRENTLY_READING);
-  // });
+  it('must call "onMove" prop when shelf is changed', () => {
+    const wrapper = build();
+    wrapper.setState({ books: testBooks.books });
+    const shelves = wrapper.find(Shelves);
 
-  // TODO: Continue this test
-  // it('moves the book between shelves', () => {
-  //   const shelve = testShelves.shelves[1];
-  //   const book = shelve.books[0];
-  //
-  //   wrapper.setState({ shelves: testShelves.shelves });
-  //   wrapper.instance().onMove(book.id, shelve.value, shelfState.READ);
-  //
-  //   expect(wrapper.state('shelves')[1].books).toHaveLength(0);
-  //   expect(wrapper.state('shelves')[2].books).toHaveLength(1);
-  //   expect(wrapper.state('shelves')[2].books).toEqual([book]);
-  // });
+    expect(wrapper.state('books')[0].shelf).toEqual(shelfState.WANT_TO_READ);
+    shelves.prop('onMove')(testBooks.books[0].id, shelfState.READ);
+    expect(wrapper.state('books')[0].shelf).toEqual(shelfState.READ);
+  });
 });

@@ -33,26 +33,6 @@ const testShelves = {
   shelves: [
     {
       name: 'Currently Reading',
-      books: testBooks.books,
-      value: shelfState.CURRENTLY_READING
-    },
-    {
-      name: 'Want to Read',
-      books: [testBooks.books[0]],
-      value: shelfState.WANT_TO_READ
-    },
-    {
-      name: 'Read',
-      books: [],
-      value: shelfState.READ
-    }
-  ]
-};
-
-const testShelvesOptions = {
-  shelves: [
-    {
-      name: 'Currently Reading',
       value: shelfState.CURRENTLY_READING
     },
     {
@@ -66,4 +46,4 @@ const testShelvesOptions = {
   ]
 };
 
-export { testBooks, testShelves, testShelvesOptions };
+export { testBooks, testShelves };

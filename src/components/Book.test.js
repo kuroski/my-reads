@@ -2,13 +2,12 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
 import Book from './Book';
-import { testBooks, testShelvesOptions } from '../common/testData';
+import { testBooks, testShelves } from '../common/testData';
 import { shelfState } from '../common/shelfState';
 
 describe('Book Component', () => {
   let book;
   let props;
-  let onMove = jest.fn();
 
   const build = () => {
     return shallow(<Book {...props} />);
@@ -17,13 +16,13 @@ describe('Book Component', () => {
   beforeAll(() => {
     book = testBooks.books[0];
     props = {
-      coverImage: book.imageLinks.thumbnail,
       id: book.id,
       title: book.title,
       authors: book.authors,
-      shelves: testShelvesOptions.shelves,
-      selectedShelve: testShelvesOptions.shelves[1].value,
-      onMove
+      coverImage: book.imageLinks.thumbnail,
+      shelves: testShelves.shelves,
+      selectedShelve: testShelves.shelves[1].value,
+      onMove: jest.fn()
     };
   });
 
@@ -70,10 +69,9 @@ describe('Book Component', () => {
     select.simulate('change', {
       target: { value: shelfState.CURRENTLY_READING }
     });
-    expect(onMove).toHaveBeenCalledTimes(1);
-    expect(onMove).toHaveBeenCalledWith(
+    expect(props.onMove).toHaveBeenCalledTimes(1);
+    expect(props.onMove).toHaveBeenCalledWith(
       book.id,
-      props.selectedShelve,
       shelfState.CURRENTLY_READING
     );
   });
@@ -82,9 +80,9 @@ describe('Book Component', () => {
     const wrapper = build();
     const options = wrapper.find('.book-shelf-option');
 
-    expect(options).toHaveLength(testShelvesOptions.shelves.length);
+    expect(options).toHaveLength(testShelves.shelves.length);
     options.forEach((option, index) => {
-      const optionComparable = testShelvesOptions.shelves[index];
+      const optionComparable = testShelves.shelves[index];
       expect(option.prop('value')).toEqual(optionComparable.value);
       expect(option.prop('children')).toEqual(optionComparable.name);
     });

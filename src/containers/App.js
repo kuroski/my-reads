@@ -1,40 +1,27 @@
 import React, { Component } from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 import SearchPage from './SearchPage';
 import Shelves from '../components/Shelves';
-import { testShelves } from '../common/testData';
+import { testBooks, testShelves } from '../common/testData';
 import './App.css';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      shelves: testShelves.shelves
+      shelves: testShelves.shelves,
+      books: testBooks.books
     };
 
     this.onMove = this.onMove.bind(this);
   }
 
-  onMove(id, origin, destiny) {
-    console.log(id, origin, destiny);
-    const originShelf = this.state.shelves.find(
-      shelf => shelf.value === origin
-    );
-    const book = originShelf.books.find(book => book.id === id);
-    const destinyShelf = this.state.shelves.find(
-      shelf => shelf.value === destiny
-    );
-
-    console.log(book);
-    console.log(originShelf);
-    console.log(destinyShelf);
-
+  onMove(bookId, destinyShelf) {
     this.setState(prevState => {
+      const book = prevState.books.find(book => book.id === bookId);
+      book.shelf = destinyShelf;
       return {
-        shelves: prevState.shelves.map(shelve => {
-          shelve.books = shelve.books.map(book => {});
-          return shelve;
-        })
+        books: prevState.books
       };
     });
   }
@@ -52,7 +39,11 @@ class App extends Component {
                 <h1>MyReads</h1>
               </div>
               <div className="list-books-content">
-                <Shelves shelves={this.state.shelves} onMove={this.onMove} />
+                <Shelves
+                  shelves={this.state.shelves}
+                  books={this.state.books}
+                  onMove={this.onMove}
+                />
               </div>
 
               <div className="open-search">
