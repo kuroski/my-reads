@@ -18,7 +18,7 @@ describe('BookShelf Container', () => {
       name: 'Currently Reading',
       books: [testBooks.books[0]],
       shelves: testShelves.shelves,
-      shelveId: testShelves.shelves[0].value,
+      shelfId: testShelves.shelves[0].value,
       onMove: jest.fn()
     };
   });
@@ -82,7 +82,7 @@ describe('BookShelf Container', () => {
       comparableBook.imageLinks.thumbnail
     );
     expect(book.prop('shelves')).toEqual(props.shelves);
-    expect(book.prop('selectedShelve')).toEqual(props.shelveId);
+    expect(book.prop('selectedShelf')).toEqual(props.shelfId);
     expect(book.prop('onMove')).toEqual(props.onMove);
   }
 });

@@ -15,7 +15,7 @@ const BookShelf = props => {
           authors={book.authors}
           coverImage={book.imageLinks.thumbnail}
           onMove={props.onMove}
-          selectedShelve={props.shelveId}
+          selectedShelf={props.shelfId}
           shelves={props.shelves}
         />
       </li>
@@ -34,7 +34,7 @@ const BookShelf = props => {
 
 BookShelf.propTypes = {
   name: PropTypes.string.isRequired,
-  shelveId: PropTypes.string,
+  shelfId: PropTypes.string,
   onMove: PropTypes.func.isRequired,
   books: PropTypes.array,
   shelves: PropTypes.arrayOf(
