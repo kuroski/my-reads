@@ -6,13 +6,9 @@ const Book = props => {
     props.onMove(props.id, e.target.value);
   };
 
-  const renderedOptions = props.shelves.map(shelve => (
-    <option
-      key={shelve.value}
-      value={shelve.value}
-      className="book-shelf-option"
-    >
-      {shelve.name}
+  const renderedOptions = props.shelves.map(shelf => (
+    <option key={shelf.value} value={shelf.value} className="book-shelf-option">
+      {shelf.name}
     </option>
   ));
 
@@ -27,7 +23,7 @@ const Book = props => {
           alt={props.title}
         />
         <div className="book-shelf-changer">
-          <select onChange={onMove} value={props.selectedShelve}>
+          <select onChange={onMove} value={props.selectedShelf}>
             <option value="none" disabled>
               Move to...
             </option>
@@ -53,13 +49,13 @@ Book.propTypes = {
       value: PropTypes.string
     })
   ),
-  selectedShelve: PropTypes.string
+  selectedShelf: PropTypes.string
 };
 
 Book.defaultProps = {
   coverImage: 'http://i.imgur.com/J5LVHEL.jpg',
   shelves: [],
-  selectedShelve: ''
+  selectedShelf: ''
 };
 
 export default Book;

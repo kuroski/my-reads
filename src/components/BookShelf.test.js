@@ -43,14 +43,14 @@ describe('BookShelf Container', () => {
     _expectBookRenderedCorrectly(book, firstBook);
   });
 
-  it('renders a empty shelve message when no book or empty array is passed', () => {
+  it('renders a empty shelf message when no book or empty array is passed', () => {
     props.books = [];
     const wrapper = build();
     const emptyMessage = wrapper.find('.empty-message');
 
     expect(wrapper.find(Book)).toHaveLength(0);
     expect(emptyMessage).toHaveLength(1);
-    expect(emptyMessage.contains('No books on this shelve')).toBe(true);
+    expect(emptyMessage.contains('No books on this shelf')).toBe(true);
   });
 
   it('renders some Books components when a list of books are passed', () => {

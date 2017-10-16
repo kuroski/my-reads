@@ -21,7 +21,7 @@ describe('Book Component', () => {
       authors: book.authors,
       coverImage: book.imageLinks.thumbnail,
       shelves: testShelves.shelves,
-      selectedShelve: testShelves.shelves[1].value,
+      selectedShelf: testShelves.shelves[1].value,
       onMove: jest.fn()
     };
   });
@@ -90,6 +90,6 @@ describe('Book Component', () => {
 
   it('set option when "shelfSelected" prop is passed', () => {
     const wrapper = build();
-    expect(wrapper.find('select').prop('value')).toEqual(props.selectedShelve);
+    expect(wrapper.find('select').prop('value')).toEqual(props.selectedShelf);
   });
 });

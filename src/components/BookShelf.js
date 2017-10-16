@@ -5,7 +5,7 @@ import Book from './Book';
 const BookShelf = props => {
   const renderBooks = () => {
     if (!props.books || props.books.length === 0)
-      return <li className="empty-message">No books on this shelve</li>;
+      return <li className="empty-message">No books on this shelf</li>;
 
     return props.books.map(book => (
       <li key={book.id}>
@@ -48,7 +48,7 @@ BookShelf.propTypes = {
 BookShelf.defaultProps = {
   books: [],
   shelves: [],
-  shelveId: ''
+  shelfId: ''
 };
 
 export default BookShelf;

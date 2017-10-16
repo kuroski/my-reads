@@ -3,23 +3,27 @@ import PropTypes from 'prop-types';
 import BookShelf from './BookShelf';
 
 const Shelves = props => {
-  const renderBookSHelves = () => {
-    if (!props.shelves || props.shelves.length === 0)
-      return <div className="empty-message">Oops, no shelve created</div>;
+  const booksOfShelf = shelfId => {
+    return props.books.filter(book => book.shelf === shelfId);
+  };
 
-    return props.shelves.map(shelve => (
+  const renderBookShelves = () => {
+    if (!props.shelves || props.shelves.length === 0)
+      return <div className="empty-message">Oops, no shelf created</div>;
+
+    return props.shelves.map(shelf => (
       <BookShelf
-        key={shelve.name}
-        name={shelve.name}
-        shelveId={shelve.value}
+        key={shelf.name}
+        name={shelf.name}
+        shelfId={shelf.value}
         shelves={props.shelves}
-        books={props.books}
+        books={booksOfShelf(shelf.value)}
         onMove={props.onMove}
       />
     ));
   };
 
-  return <div>{renderBookSHelves()}</div>;
+  return <div>{renderBookShelves()}</div>;
 };
 
 Shelves.propTypes = {
