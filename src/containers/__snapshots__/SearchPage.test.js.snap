@@ -18,6 +18,7 @@ exports[`SearchPage Container renders correctly 1`] = `
       className="search-books-input-wrapper"
     >
       <input
+        onChange={[Function]}
         placeholder="Search by title or author"
         type="text"
       />
@@ -28,7 +29,13 @@ exports[`SearchPage Container renders correctly 1`] = `
   >
     <ol
       className="books-grid"
-    />
+    >
+      <li
+        className="empty-message"
+      >
+        No books on this shelf
+      </li>
+    </ol>
   </div>
 </div>
 `;
