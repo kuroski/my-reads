@@ -1,3 +1,5 @@
+import { shelfState } from './shelfState';
+
 export const apiUrl = 'https://reactnd-books-api.udacity.com';
 
 export const apiToken = () => {
@@ -8,6 +10,27 @@ export const apiToken = () => {
       .substr(-8);
 
   return token;
+};
+
+export const shelves = {
+  shelves: [
+    {
+      name: 'Currently Reading',
+      value: shelfState.CURRENTLY_READING
+    },
+    {
+      name: 'Want to Read',
+      value: shelfState.WANT_TO_READ
+    },
+    {
+      name: 'Read',
+      value: shelfState.READ
+    },
+    {
+      name: 'None',
+      value: shelfState.NONE
+    }
+  ]
 };
 
 export const searchTerms = [

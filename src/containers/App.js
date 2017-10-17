@@ -2,14 +2,15 @@ import React, { Component } from 'react';
 import { Link, Route } from 'react-router-dom';
 import SearchPage from './SearchPage';
 import Shelves from '../components/Shelves';
-import { testBooks, testShelves } from '../common/testData';
+import { testBooks } from '../common/testData';
+import { shelves } from '../common/commonData';
 import './App.css';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      shelves: testShelves.shelves,
+      shelves: shelves.shelves,
       books: testBooks.books
     };
 
@@ -29,7 +30,12 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        <Route path="/search" render={() => <SearchPage />} />
+        <Route
+          path="/search"
+          render={() => (
+            <SearchPage shelves={this.state.shelves} onMove={this.onMove} />
+          )}
+        />
         <Route
           exact
           path="/"

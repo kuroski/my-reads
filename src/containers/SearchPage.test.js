@@ -6,7 +6,7 @@ import fetchMock from 'fetch-mock';
 import SearchPage from './SearchPage';
 import Book from '../components/Book';
 import { testBooks } from '../common/testData';
-import { searchTerms, apiUrl } from '../common/commonData';
+import { apiUrl, searchTerms } from '../common/commonData';
 
 describe('SearchPage Container', () => {
   const mockResponse = (status, statusText, response) => {
@@ -25,14 +25,17 @@ describe('SearchPage Container', () => {
   };
 
   beforeAll(() => {
-    props = {};
+    props = {
+      shelves: [],
+      onMove: () => {}
+    };
   });
 
   it('renders correctly', () => {
     const SearchPageTree = renderer
       .create(
         <MemoryRouter>
-          <SearchPage />
+          <SearchPage shelves={[]} onMove={() => {}} />
         </MemoryRouter>
       )
       .toJSON();
