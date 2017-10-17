@@ -1,11 +1,23 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
-import nock from 'nock';
 import { MemoryRouter } from 'react-router-dom';
+import fetchMock from 'fetch-mock';
 import SearchPage from './SearchPage';
+import Book from '../components/Book';
+import { testBooks } from '../common/testData';
+import { searchTerms, apiUrl } from '../common/commonData';
 
 describe('SearchPage Container', () => {
+  const mockResponse = (status, statusText, response) => {
+    return new window.Response(response, {
+      status: status,
+      statusText: statusText,
+      headers: {
+        'Content-type': 'application/json'
+      }
+    });
+  };
   let props;
 
   const build = () => {
@@ -14,10 +26,6 @@ describe('SearchPage Container', () => {
 
   beforeAll(() => {
     props = {};
-  });
-
-  afterEach(() => {
-    nock.cleanAll();
   });
 
   it('renders correctly', () => {
@@ -31,28 +39,22 @@ describe('SearchPage Container', () => {
     expect(SearchPageTree).toMatchSnapshot();
   });
 
-  // TODO: Find a way to mock fetch requests
-  // it('shows a Book list when searched', () => {
-  //   const wrapper = build();
-  //   const request = nock('https://reactnd-books-api.udacity.com', {
-  //     reqheaders: {
-  //       Accept: 'application/json',
-  //       'Content-Type': 'application/json'
-  //     }
-  //   })
-  //     .post('/search', {
-  //       maxResults: 20,
-  //       query: searchTerms[0]
-  //     })
-  //     .reply(200, testBooks);
-  //
-  //   wrapper
-  //     .instance()
-  //     .onSearch(searchTerms[0])
-  //     .then(response => {
-  //       console.log(wrapper.debug());
-  //       console.log(wrapper.state('searchedBooks'));
-  //       request.done();
-  //     });
-  // });
+  it('shows a Book list when term is searched', () => {
+    const wrapper = build();
+
+    fetchMock.post(`${apiUrl}/search`, testBooks);
+    wrapper
+      .instance()
+      .onSearch(searchTerms[0])
+      .then(() => {
+        wrapper.update();
+        const firstBook = wrapper.find(Book).first();
+
+        expect(wrapper.state('searchedBooks')).toHaveLength(
+          testBooks.books.length
+        );
+        expect(firstBook).toBeDefined();
+        expect(firstBook.prop('id')).toEqual(testBooks.books[0].id);
+      });
+  });
 });
