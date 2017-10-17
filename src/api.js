@@ -1,4 +1,4 @@
-import { apiToken, apiUrl } from 'common/commonData';
+import { apiToken, apiUrl } from './common/commonData';
 
 // Generate a unique token for storing your bookshelf data on the backend server.
 let token = apiToken();
