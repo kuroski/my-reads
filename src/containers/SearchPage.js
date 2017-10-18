@@ -4,28 +4,12 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Book from '../components/Book';
 import Loader from '../components/Loader';
-import Autosuggest from 'react-autosuggest';
 import { search } from '../api';
 import { searchTerms } from '../common/commonData';
-
-const getSuggestions = value => {
-  const inputValue = value.trim().toLowerCase();
-  const inputLength = inputValue.length;
-
-  return inputLength === 0
-    ? []
-    : searchTerms.filter(
-        lang => lang.toLowerCase().slice(0, inputLength) === inputValue
-      );
-};
-
-const renderSuggestion = suggestion => <div>{suggestion}</div>;
 
 const SearchPage = createReactClass({
   getInitialState: () => ({
     searchedBooks: [],
-    value: '',
-    suggestions: [],
     isLoading: false
   }),
 
@@ -38,25 +22,6 @@ const SearchPage = createReactClass({
     this.setState({ isLoading: true });
     const books = await search(query);
     this.setState({ searchedBooks: books, isLoading: false });
-  },
-
-  onChange: function(event, { newValue }) {
-    this.setState({
-      value: newValue
-    });
-    this.onSearch(newValue);
-  },
-
-  onSuggestionsFetchRequested: function({ value }) {
-    this.setState({
-      suggestions: getSuggestions(value)
-    });
-  },
-
-  onSuggestionsClearRequested: function() {
-    this.setState({
-      suggestions: []
-    });
   },
 
   renderBooks: function() {
@@ -83,14 +48,6 @@ const SearchPage = createReactClass({
   },
 
   render: function() {
-    const { value, suggestions } = this.state;
-
-    const inputProps = {
-      placeholder: 'Search by title or author',
-      value,
-      onChange: this.onChange
-    };
-
     return (
       <div className="search-books">
         <div className="search-books-bar">
@@ -98,13 +55,10 @@ const SearchPage = createReactClass({
             Close
           </Link>
           <div className="search-books-input-wrapper">
-            <Autosuggest
-              suggestions={suggestions}
-              onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-              onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-              getSuggestionValue={suggestion => suggestion}
-              renderSuggestion={renderSuggestion}
-              inputProps={inputProps}
+            <input
+              type="text"
+              onChange={e => this.onSearch(e.target.value)}
+              placeholder="Search by title or author"
             />
           </div>
         </div>
