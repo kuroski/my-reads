@@ -3,7 +3,13 @@ import PropTypes from 'prop-types';
 
 const Book = props => {
   const onMove = e => {
-    props.onMove(props.id, e.target.value);
+    const book = {
+      id: props.id,
+      title: props.title,
+      authors: props.authors,
+      coverImage: props.coverImage
+    };
+    props.onMove(book, e.target.value);
   };
 
   const renderedOptions = props.shelves.map(shelf => (

@@ -13,7 +13,7 @@ describe('Book Component', () => {
     return shallow(<Book {...props} />);
   };
 
-  beforeAll(() => {
+  beforeEach(() => {
     book = testBooks.books[0];
     props = {
       id: book.id,
@@ -66,12 +66,20 @@ describe('Book Component', () => {
   it('must call "onMove" prop when shelf is changed', () => {
     const wrapper = build();
     const select = wrapper.find('select');
+    const expectedBook = {
+      id: book.id,
+      title: book.title,
+      authors: book.authors,
+      coverImage: book.imageLinks.thumbnail
+    };
+
     select.simulate('change', {
       target: { value: shelfState.CURRENTLY_READING }
     });
+
     expect(props.onMove).toHaveBeenCalledTimes(1);
     expect(props.onMove).toHaveBeenCalledWith(
-      book.id,
+      expectedBook,
       shelfState.CURRENTLY_READING
     );
   });

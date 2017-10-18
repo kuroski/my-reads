@@ -31,9 +31,16 @@ describe('Shelves Container', () => {
     const wrapper = build();
     wrapper.setState({ books: testBooks.books });
     const shelves = wrapper.find(Shelves);
+    const bookState = wrapper.state('books')[0];
+    const expectedBook = {
+      id: bookState.id,
+      title: bookState.title,
+      authors: bookState.authors,
+      coverImage: bookState.imageLinks.thumbnail
+    };
 
     expect(wrapper.state('books')[0].shelf).toEqual(shelfState.WANT_TO_READ);
-    shelves.prop('onMove')(testBooks.books[0].id, shelfState.READ);
+    shelves.prop('onMove')(expectedBook, shelfState.READ);
     expect(wrapper.state('books')[0].shelf).toEqual(shelfState.READ);
   });
 });
