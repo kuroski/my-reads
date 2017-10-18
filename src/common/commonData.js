@@ -25,10 +25,6 @@ export const shelves = {
     {
       name: 'Read',
       value: shelfState.READ
-    },
-    {
-      name: 'None',
-      value: shelfState.NONE
     }
   ]
 };

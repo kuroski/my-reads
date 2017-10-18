@@ -19,8 +19,13 @@ class App extends Component {
 
   onMove(bookToChange, destinyShelf) {
     this.setState(prevState => {
-      const book = prevState.books.find(book => book.id === bookToChange.id);
-      book.shelf = destinyShelf;
+      let book = prevState.books.find(book => book.id === bookToChange.id);
+      if (book) book.shelf = destinyShelf;
+      else {
+        bookToChange.shelf = destinyShelf;
+        prevState.books.push(bookToChange);
+      }
+
       return {
         books: prevState.books
       };

@@ -19,7 +19,7 @@ describe('Book Component', () => {
       id: book.id,
       title: book.title,
       authors: book.authors,
-      coverImage: book.imageLinks.thumbnail,
+      coverImage: book.coverImage,
       shelves: testShelves.shelves,
       selectedShelf: testShelves.shelves[1].value,
       onMove: jest.fn()
@@ -36,7 +36,7 @@ describe('Book Component', () => {
     const wrapper = build();
     expect(
       wrapper.containsMatchingElement(
-        <img src={book.imageLinks.thumbnail} alt={book.title} />
+        <img src={book.coverImage} alt={book.title} />
       )
     ).toBe(true);
   });
@@ -70,7 +70,7 @@ describe('Book Component', () => {
       id: book.id,
       title: book.title,
       authors: book.authors,
-      coverImage: book.imageLinks.thumbnail
+      coverImage: book.coverImage
     };
 
     select.simulate('change', {

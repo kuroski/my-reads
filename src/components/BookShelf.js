@@ -13,7 +13,7 @@ const BookShelf = props => {
           id={book.id}
           title={book.title}
           authors={book.authors}
-          coverImage={book.imageLinks.thumbnail}
+          coverImage={book.coverImage}
           onMove={props.onMove}
           selectedShelf={props.shelfId}
           shelves={props.shelves}

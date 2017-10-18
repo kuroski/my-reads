@@ -78,9 +78,7 @@ describe('BookShelf Container', () => {
     expect(book.prop('id')).toEqual(comparableBook.id);
     expect(book.prop('title')).toEqual(comparableBook.title);
     expect(book.prop('authors')).toEqual(comparableBook.authors);
-    expect(book.prop('coverImage')).toEqual(
-      comparableBook.imageLinks.thumbnail
-    );
+    expect(book.prop('coverImage')).toEqual(comparableBook.coverImage);
     expect(book.prop('shelves')).toEqual(props.shelves);
     expect(book.prop('selectedShelf')).toEqual(props.shelfId);
     expect(book.prop('onMove')).toEqual(props.onMove);
