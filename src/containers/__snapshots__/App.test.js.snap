@@ -54,125 +54,10 @@ exports[`Shelves Container renders App Container correctly 1`] = `
             <ol
               className="books-grid"
             >
-              <li>
-                <div
-                  className="book"
-                >
-                  <div
-                    className="book-top"
-                  >
-                    <img
-                      alt="Book Title 1"
-                      className="book-cover"
-                      height="193"
-                      src="http://img01.jpg"
-                      width="128"
-                    />
-                    <div
-                      className="book-shelf-changer"
-                    >
-                      <select
-                        onChange={[Function]}
-                        value="wantToRead"
-                      >
-                        <option
-                          disabled={true}
-                          value="none"
-                        >
-                          Move to...
-                        </option>
-                        <option
-                          className="book-shelf-option"
-                          value="currentlyReading"
-                        >
-                          Currently Reading
-                        </option>
-                        <option
-                          className="book-shelf-option"
-                          value="wantToRead"
-                        >
-                          Want to Read
-                        </option>
-                        <option
-                          className="book-shelf-option"
-                          value="read"
-                        >
-                          Read
-                        </option>
-                      </select>
-                    </div>
-                  </div>
-                  <div
-                    className="book-title"
-                  >
-                    Book Title 1
-                  </div>
-                  <div
-                    className="book-authors"
-                  >
-                    Author One, Author Two
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div
-                  className="book"
-                >
-                  <div
-                    className="book-top"
-                  >
-                    <img
-                      alt="Book Title 3"
-                      className="book-cover"
-                      height="193"
-                      src="http://img03.jpg"
-                      width="128"
-                    />
-                    <div
-                      className="book-shelf-changer"
-                    >
-                      <select
-                        onChange={[Function]}
-                        value="wantToRead"
-                      >
-                        <option
-                          disabled={true}
-                          value="none"
-                        >
-                          Move to...
-                        </option>
-                        <option
-                          className="book-shelf-option"
-                          value="currentlyReading"
-                        >
-                          Currently Reading
-                        </option>
-                        <option
-                          className="book-shelf-option"
-                          value="wantToRead"
-                        >
-                          Want to Read
-                        </option>
-                        <option
-                          className="book-shelf-option"
-                          value="read"
-                        >
-                          Read
-                        </option>
-                      </select>
-                    </div>
-                  </div>
-                  <div
-                    className="book-title"
-                  >
-                    Book Title 3
-                  </div>
-                  <div
-                    className="book-authors"
-                  >
-                    Lucky Guy, Telonious Monk, Rapid Fast
-                  </div>
-                </div>
+              <li
+                className="empty-message"
+              >
+                No books on this shelf
               </li>
             </ol>
           </div>
@@ -191,65 +76,10 @@ exports[`Shelves Container renders App Container correctly 1`] = `
             <ol
               className="books-grid"
             >
-              <li>
-                <div
-                  className="book"
-                >
-                  <div
-                    className="book-top"
-                  >
-                    <img
-                      alt="Book Title 2"
-                      className="book-cover"
-                      height="193"
-                      src="http://img02.jpg"
-                      width="128"
-                    />
-                    <div
-                      className="book-shelf-changer"
-                    >
-                      <select
-                        onChange={[Function]}
-                        value="read"
-                      >
-                        <option
-                          disabled={true}
-                          value="none"
-                        >
-                          Move to...
-                        </option>
-                        <option
-                          className="book-shelf-option"
-                          value="currentlyReading"
-                        >
-                          Currently Reading
-                        </option>
-                        <option
-                          className="book-shelf-option"
-                          value="wantToRead"
-                        >
-                          Want to Read
-                        </option>
-                        <option
-                          className="book-shelf-option"
-                          value="read"
-                        >
-                          Read
-                        </option>
-                      </select>
-                    </div>
-                  </div>
-                  <div
-                    className="book-title"
-                  >
-                    Book Title 2
-                  </div>
-                  <div
-                    className="book-authors"
-                  >
-                    Mist Misterious
-                  </div>
-                </div>
+              <li
+                className="empty-message"
+              >
+                No books on this shelf
               </li>
             </ol>
           </div>

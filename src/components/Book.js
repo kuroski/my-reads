@@ -16,7 +16,11 @@ const Book = props => {
     <div className="book">
       <div className="book-top">
         <img
-          src={props.book.coverImage || 'http://i.imgur.com/J5LVHEL.jpg'}
+          src={
+            props.book.imageLinks
+              ? props.book.imageLinks.thumbnail
+              : 'http://i.imgur.com/J5LVHEL.jpg'
+          }
           width="128"
           height="193"
           className="book-cover"
@@ -42,7 +46,9 @@ Book.propTypes = {
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     authors: PropTypes.array.isRequired,
-    coverImage: PropTypes.string
+    imageLinks: PropTypes.shape({
+      thumbnail: PropTypes.string
+    })
   }).isRequired,
   onMove: PropTypes.func.isRequired,
   shelves: PropTypes.arrayOf(
@@ -55,6 +61,11 @@ Book.propTypes = {
 };
 
 Book.defaultProps = {
+  book: {
+    imageLinks: {
+      thumbnail: 'http://i.imgur.com/J5LVHEL.jpg'
+    }
+  },
   shelves: [],
   selectedShelf: ''
 };

@@ -2,10 +2,9 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import shallow from 'enzyme/shallow';
 import { MemoryRouter } from 'react-router-dom';
-import fetchMock from 'fetch-mock';
 import SearchPage from './SearchPage';
 import Book from '../components/Book';
-import { searchedTestBooks } from '../common/testData';
+import { testBooks, jsonHeaders } from '../common/testData';
 import { shelfState } from '../common/shelfState';
 import { apiUrl, searchTerms } from '../common/commonData';
 
@@ -17,6 +16,7 @@ describe('SearchPage Container', () => {
   };
 
   beforeAll(() => {
+    fetch.mockResponse(JSON.stringify(testBooks), { jsonHeaders });
     props = {
       shelves: [],
       onMove: jest.fn()
@@ -37,7 +37,6 @@ describe('SearchPage Container', () => {
   it('shows a Book list when term is searched', done => {
     const wrapper = build();
     const input = wrapper.find('input').first();
-    fetchMock.post(`${apiUrl}/search`, searchedTestBooks);
 
     input.simulate('change', {
       target: { value: searchTerms[0] }
@@ -48,17 +47,17 @@ describe('SearchPage Container', () => {
       const firstBook = wrapper.find(Book).first();
 
       expect(wrapper.state('searchedBooks')).toHaveLength(
-        searchedTestBooks.books.length
+        testBooks.books.length
       );
       expect(firstBook).toBeDefined();
-      expect(firstBook.prop('book').id).toEqual(searchedTestBooks.books[0].id);
+      expect(firstBook.prop('book').id).toEqual(testBooks.books[0].id);
       done();
     });
   });
 
   it('must call "onMove" prop when Book is changed', () => {
     const wrapper = build();
-    wrapper.setState({ searchedBooks: searchedTestBooks.books });
+    wrapper.setState({ searchedBooks: testBooks.books });
     const firstBook = wrapper.find(Book).first();
     const expectedBook = {
       id: firstBook.prop('id'),
@@ -74,5 +73,27 @@ describe('SearchPage Container', () => {
       expectedBook,
       shelfState.CURRENTLY_READING
     );
+  });
+
+  it('shows an error message when searched query is not on the available terms list', done => {
+    const wrapper = build();
+    const input = wrapper.find('input').first();
+
+    input.simulate('change', {
+      target: { value: 'doesnt exist' }
+    });
+
+    jest.useFakeTimers();
+    setTimeout(() => {
+      wrapper.update();
+      const errorMessage = wrapper.find('.empty-message').first();
+
+      expect(errorMessage).toBeDefined();
+      expect(errorMessage.html()).toContain(
+        'No books here, search for something'
+      );
+      done();
+    });
+    jest.runAllTimers();
   });
 });

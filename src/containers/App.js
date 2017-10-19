@@ -1,23 +1,26 @@
-import React, { Component } from 'react';
+import React from 'react';
+import createReactClass from 'create-react-class';
 import { Link, Route } from 'react-router-dom';
 import SearchPage from './SearchPage';
 import Shelves from '../components/Shelves';
-import { testBooks } from '../common/testData';
+import { getAll, update } from '../api';
 import { shelves } from '../common/commonData';
 import './App.css';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      shelves: shelves.shelves,
-      books: testBooks.books
-    };
+const App = createReactClass({
+  getInitialState: () => ({
+    shelves: shelves.shelves,
+    books: []
+  }),
 
-    this.onMove = this.onMove.bind(this);
-  }
+  componentDidMount: async function() {
+    const books = await getAll();
+    this.setState({ books });
+  },
 
-  onMove(bookToChange, destinyShelf) {
+  onMove: async function(bookToChange, destinyShelf) {
+    await update(bookToChange, destinyShelf);
+
     this.setState(prevState => {
       let book = prevState.books.find(book => book.id === bookToChange.id);
       if (book) book.shelf = destinyShelf;
@@ -30,9 +33,9 @@ class App extends Component {
         books: prevState.books
       };
     });
-  }
+  },
 
-  render() {
+  render: function() {
     return (
       <div className="app">
         <Route
@@ -66,6 +69,6 @@ class App extends Component {
       </div>
     );
   }
-}
+});
 
 export default App;

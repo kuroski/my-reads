@@ -14,10 +14,7 @@ const SearchPage = createReactClass({
   }),
 
   onSearch: async function(query) {
-    if (!searchTerms.includes(query)) {
-      console.error('Bad search, this term are not supported');
-      return;
-    }
+    if (!searchTerms.includes(query)) return;
 
     this.setState({ isLoading: true });
     const books = await search(query);

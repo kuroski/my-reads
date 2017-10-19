@@ -16,12 +16,7 @@ describe('Book Component', () => {
   beforeEach(() => {
     book = testBooks.books[0];
     props = {
-      book: {
-        id: book.id,
-        title: book.title,
-        authors: book.authors,
-        coverImage: book.coverImage
-      },
+      book,
       shelves: testShelves.shelves,
       selectedShelf: testShelves.shelves[1].value,
       onMove: jest.fn()
@@ -43,8 +38,8 @@ describe('Book Component', () => {
     ).toBe(true);
   });
 
-  it('should must show the book cover default image when no cover is provided', () => {
-    delete props.book.coverImage;
+  it('must show the book cover default image when no cover is provided', () => {
+    delete props.book.imageLinks;
     const wrapper = build();
     expect(
       wrapper.containsMatchingElement(
@@ -68,12 +63,6 @@ describe('Book Component', () => {
   it('must call "onMove" prop when shelf is changed', () => {
     const wrapper = build();
     const select = wrapper.find('select');
-    const expectedBook = {
-      id: book.id,
-      title: book.title,
-      authors: book.authors,
-      coverImage: book.coverImage
-    };
 
     select.simulate('change', {
       target: { value: shelfState.CURRENTLY_READING }
@@ -81,7 +70,7 @@ describe('Book Component', () => {
 
     expect(props.onMove).toHaveBeenCalledTimes(1);
     expect(props.onMove).toHaveBeenCalledWith(
-      expectedBook,
+      book,
       shelfState.CURRENTLY_READING
     );
   });

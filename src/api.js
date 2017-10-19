@@ -13,12 +13,12 @@ export const get = bookId =>
     .then(res => res.json())
     .then(data => data.book);
 
-export const getAll = () =>
+export const getAll = async () =>
   fetch(`${apiUrl}/books`, { headers })
     .then(res => res.json())
     .then(data => data.books);
 
-export const update = (book, shelf) =>
+export const update = async (book, shelf) =>
   fetch(`${apiUrl}/books/${book.id}`, {
     method: 'PUT',
     headers: {
