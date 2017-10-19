@@ -2,7 +2,6 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import { MemoryRouter, Link } from 'react-router-dom';
 import { mount, shallow } from 'enzyme';
-import fetchMock from 'fetch-mock';
 import App from './App';
 import SearchPage from './SearchPage';
 import Shelves from '../components/Shelves';
