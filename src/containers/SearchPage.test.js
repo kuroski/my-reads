@@ -10,15 +10,6 @@ import { shelfState } from '../common/shelfState';
 import { apiUrl, searchTerms } from '../common/commonData';
 
 describe('SearchPage Container', () => {
-  const mockResponse = (status, statusText, response) => {
-    return new window.Response(response, {
-      status: status,
-      statusText: statusText,
-      headers: {
-        'Content-type': 'application/json'
-      }
-    });
-  };
   let props;
 
   const build = () => {
@@ -46,7 +37,7 @@ describe('SearchPage Container', () => {
   it('shows a Book list when term is searched', done => {
     const wrapper = build();
     const input = wrapper.find('input').first();
-    const fetch = fetchMock.post(`${apiUrl}/search`, searchedTestBooks);
+    fetchMock.post(`${apiUrl}/search`, searchedTestBooks);
 
     input.simulate('change', {
       target: { value: searchTerms[0] }
@@ -60,7 +51,7 @@ describe('SearchPage Container', () => {
         searchedTestBooks.books.length
       );
       expect(firstBook).toBeDefined();
-      expect(firstBook.prop('id')).toEqual(searchedTestBooks.books[0].id);
+      expect(firstBook.prop('book').id).toEqual(searchedTestBooks.books[0].id);
       done();
     });
   });

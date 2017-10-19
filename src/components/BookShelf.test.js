@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { shallow } from 'enzyme';
+import shallow from 'enzyme/shallow';
 import BookShelf from './BookShelf';
 import Book from './Book';
 import { testBooks, testShelves } from '../common/testData';
@@ -75,10 +75,11 @@ describe('BookShelf Container', () => {
   });
 
   function _expectBookRenderedCorrectly(book, comparableBook) {
-    expect(book.prop('id')).toEqual(comparableBook.id);
-    expect(book.prop('title')).toEqual(comparableBook.title);
-    expect(book.prop('authors')).toEqual(comparableBook.authors);
-    expect(book.prop('coverImage')).toEqual(comparableBook.coverImage);
+    const expectedBook = book.prop('book');
+    expect(expectedBook.id).toEqual(comparableBook.id);
+    expect(expectedBook.title).toEqual(comparableBook.title);
+    expect(expectedBook.authors).toEqual(comparableBook.authors);
+    expect(expectedBook.coverImage).toEqual(comparableBook.coverImage);
     expect(book.prop('shelves')).toEqual(props.shelves);
     expect(book.prop('selectedShelf')).toEqual(props.shelfId);
     expect(book.prop('onMove')).toEqual(props.onMove);

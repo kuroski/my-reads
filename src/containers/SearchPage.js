@@ -35,10 +35,7 @@ const SearchPage = createReactClass({
     return books.map(book => (
       <li key={book.id}>
         <Book
-          id={book.id}
-          title={book.title}
-          authors={book.authors}
-          coverImage={book.imageLinks.thumbnail}
+          book={book}
           onMove={this.props.onMove}
           selectedShelf="none"
           shelves={this.props.shelves}

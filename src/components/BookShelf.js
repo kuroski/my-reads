@@ -10,10 +10,7 @@ const BookShelf = props => {
     return props.books.map(book => (
       <li key={book.id}>
         <Book
-          id={book.id}
-          title={book.title}
-          authors={book.authors}
-          coverImage={book.coverImage}
+          book={book}
           onMove={props.onMove}
           selectedShelf={props.shelfId}
           shelves={props.shelves}

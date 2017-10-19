@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { shallow } from 'enzyme';
+import shallow from 'enzyme/shallow';
 import Book from './Book';
 import { testBooks, testShelves } from '../common/testData';
 import { shelfState } from '../common/shelfState';
@@ -16,10 +16,12 @@ describe('Book Component', () => {
   beforeEach(() => {
     book = testBooks.books[0];
     props = {
-      id: book.id,
-      title: book.title,
-      authors: book.authors,
-      coverImage: book.coverImage,
+      book: {
+        id: book.id,
+        title: book.title,
+        authors: book.authors,
+        coverImage: book.coverImage
+      },
       shelves: testShelves.shelves,
       selectedShelf: testShelves.shelves[1].value,
       onMove: jest.fn()
@@ -42,7 +44,7 @@ describe('Book Component', () => {
   });
 
   it('should must show the book cover default image when no cover is provided', () => {
-    delete props.coverImage;
+    delete props.book.coverImage;
     const wrapper = build();
     expect(
       wrapper.containsMatchingElement(
