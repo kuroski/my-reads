@@ -91,4 +91,14 @@ describe('Book Component', () => {
     const wrapper = build();
     expect(wrapper.find('select').prop('value')).toEqual(props.selectedShelf);
   });
+
+  it('must call "onMove" prop with "none" shelf when delete button is clicked', () => {
+    const wrapper = build();
+    const select = wrapper.find('button');
+
+    select.simulate('click');
+
+    expect(props.onMove).toHaveBeenCalledTimes(1);
+    expect(props.onMove).toHaveBeenCalledWith(book, shelfState.NONE);
+  });
 });

@@ -6,6 +6,10 @@ const Book = props => {
     props.onMove(props.book, e.target.value);
   };
 
+  const handleChange = e => {
+    props.onMove(props.book, 'none');
+  };
+
   const renderedOptions = props.shelves.map(shelf => (
     <option key={shelf.value} value={shelf.value} className="book-shelf-option">
       {shelf.name}
@@ -37,6 +41,9 @@ const Book = props => {
       </div>
       <div className="book-title">{props.book.title}</div>
       <div className="book-authors">{props.book.authors.join(', ')}</div>
+      <button type="button" onClick={handleChange}>
+        x
+      </button>
     </div>
   );
 };
