@@ -51,4 +51,14 @@ const jsonHeaders = new Headers({
   'Content-Type': 'application/json'
 });
 
-export { testBooks, testShelves, jsonHeaders };
+const mockResponse = (status, statusText, response) => {
+  return new window.Response(response, {
+    status: status,
+    statusText: statusText,
+    headers: {
+      'Content-type': 'application/json'
+    }
+  });
+};
+
+export { testBooks, testShelves, jsonHeaders, mockResponse };

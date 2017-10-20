@@ -4,9 +4,9 @@ import shallow from 'enzyme/shallow';
 import { MemoryRouter } from 'react-router-dom';
 import SearchPage from './SearchPage';
 import Book from '../components/Book';
-import { testBooks, jsonHeaders } from '../common/testData';
+import { testBooks, mockResponse } from '../common/testData';
 import { shelfState } from '../common/shelfState';
-import { apiUrl, searchTerms } from '../common/commonData';
+import { searchTerms } from '../common/commonData';
 
 describe('SearchPage Container', () => {
   let props;
@@ -16,7 +16,11 @@ describe('SearchPage Container', () => {
   };
 
   beforeAll(() => {
-    fetch.mockResponse(JSON.stringify(testBooks), { jsonHeaders });
+    window.fetch = jest
+      .fn()
+      .mockImplementation(() =>
+        Promise.resolve(mockResponse(200, null, JSON.stringify(testBooks)))
+      );
     props = {
       shelves: [],
       onMove: jest.fn()
@@ -83,7 +87,6 @@ describe('SearchPage Container', () => {
       target: { value: 'doesnt exist' }
     });
 
-    jest.useFakeTimers();
     setTimeout(() => {
       wrapper.update();
       const errorMessage = wrapper.find('.empty-message').first();
@@ -94,6 +97,5 @@ describe('SearchPage Container', () => {
       );
       done();
     });
-    jest.runAllTimers();
   });
 });
