@@ -31,9 +31,19 @@
     "build": "react-scripts build",
     "test": "cross-env NODE_PATH=src react-scripts test --env=jsdom --updateSnapshot",
     "eject": "react-scripts eject",
-    "coverage": "yarn test -- --coverage"
+    "coverage": "yarn test --coverage"
   },
   "devDependencies": {
     "cross-env": "^5.0.5"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}",
+      "!src/index.js",
+      "!src/registerServiceWorker.js",
+      "!src/tempPolyfills.js",
+      "!src/setupTests.js",
+      "!src/common/**/*.js"
+    ]
   }
 }
