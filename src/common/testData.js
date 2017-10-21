@@ -56,10 +56,5 @@ export const mockResponse = (status, statusText, response) => {
   });
 };
 
-export const mockFetch = books => {
-  return jest
-    .fn()
-    .mockImplementation(() =>
-      Promise.resolve(mockResponse(200, null, JSON.stringify(books)))
-    );
-};
+export const mockPromise = books =>
+  Promise.resolve(mockResponse(200, null, JSON.stringify(books)));

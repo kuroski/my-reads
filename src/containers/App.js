@@ -20,7 +20,8 @@ const App = createReactClass({
   },
 
   onMove: async function(bookToChange, destinyShelf) {
-    const books = await update(bookToChange, destinyShelf);
+    await update(bookToChange, destinyShelf);
+    const books = await getAll();
     this.setState({ books });
   },
 

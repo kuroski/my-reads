@@ -4,7 +4,7 @@ import shallow from 'enzyme/shallow';
 import { MemoryRouter } from 'react-router-dom';
 import SearchPage from './SearchPage';
 import Book from '../components/Book';
-import { testBooks, mockFetch } from '../common/testData';
+import { testBooks, mockPromise } from '../common/testData';
 import { shelfState } from '../common/shelfState';
 import { searchTerms } from '../common/commonData';
 
@@ -23,7 +23,9 @@ describe('SearchPage Container', () => {
   });
 
   beforeEach(() => {
-    window.fetch = mockFetch(testBooks);
+    window.fetch = jest
+      .fn()
+      .mockImplementationOnce(() => mockPromise(testBooks));
   });
 
   it('renders correctly', () => {

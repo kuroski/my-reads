@@ -4,7 +4,7 @@ import { MemoryRouter } from 'react-router-dom';
 import shallow from 'enzyme/shallow';
 import App from './App';
 import { shelfState } from '../common/shelfState';
-import { testBooks, mockFetch } from '../common/testData';
+import { testBooks, mockPromise } from '../common/testData';
 
 describe('Shelves Container', () => {
   const build = () => {
@@ -12,7 +12,9 @@ describe('Shelves Container', () => {
   };
 
   beforeEach(() => {
-    window.fetch = mockFetch(testBooks);
+    window.fetch = jest
+      .fn()
+      .mockImplementationOnce(() => mockPromise(testBooks));
   });
 
   it('renders App Container correctly', () => {
@@ -31,7 +33,10 @@ describe('Shelves Container', () => {
 
     setTimeout(async () => {
       testBooks.books[0].shelf = shelfState.READ;
-      window.fetch = mockFetch(testBooks.books);
+      window.fetch = jest
+        .fn()
+        .mockImplementationOnce(() => mockPromise(testBooks))
+        .mockImplementationOnce(() => mockPromise(testBooks));
 
       let book = wrapper.state('books')[0];
       expect(book.shelf).toEqual(shelfState.WANT_TO_READ);
@@ -59,7 +64,10 @@ describe('Shelves Container', () => {
       expect(wrapper.state('books')).toEqual(testBooks.books);
 
       testBooks.books.push(newBook);
-      window.fetch = mockFetch(testBooks.books);
+      window.fetch = jest
+        .fn()
+        .mockImplementationOnce(() => mockPromise(testBooks))
+        .mockImplementationOnce(() => mockPromise(testBooks));
       await wrapper.instance().onMove(newBook, shelfState.READ);
 
       expect(wrapper.state('books')).toHaveLength(expectedLength);
