@@ -50,7 +50,7 @@ describe('BookShelf Container', () => {
 
     expect(wrapper.find(Book)).toHaveLength(0);
     expect(emptyMessage).toHaveLength(1);
-    expect(emptyMessage.contains('No books on this shelf')).toBe(true);
+    expect(emptyMessage.contains('emptyShelf')).toBe(true);
   });
 
   it('renders some Books components when a list of books are passed', () => {

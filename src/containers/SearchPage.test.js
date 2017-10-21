@@ -91,9 +91,7 @@ describe('SearchPage Container', () => {
       const errorMessage = wrapper.find('.empty-message').first();
 
       expect(errorMessage).toBeDefined();
-      expect(errorMessage.html()).toContain(
-        'No books here, search for something'
-      );
+      expect(errorMessage.html()).toContain('noSearchResults');
       done();
     });
   });

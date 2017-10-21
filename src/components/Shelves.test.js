@@ -42,7 +42,7 @@ describe('Shelves Container', () => {
 
     expect(wrapper.find(BookShelf)).toHaveLength(0);
     expect(emptyMessage).toHaveLength(1);
-    expect(emptyMessage.contains('Oops, no shelf created')).toBe(true);
+    expect(emptyMessage.contains('noShelfCreated')).toBe(true);
   });
 
   it('renders some BookShelves components when a list of shelves are passed', () => {

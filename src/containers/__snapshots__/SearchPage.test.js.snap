@@ -12,14 +12,14 @@ exports[`SearchPage Container renders correctly 1`] = `
       href="/"
       onClick={[Function]}
     >
-      Close
+      close
     </a>
     <div
       className="search-books-input-wrapper"
     >
       <input
         onChange={[Function]}
-        placeholder="Search by title or author"
+        placeholder="searchQueryPlaceholder"
         type="text"
       />
     </div>
@@ -34,7 +34,7 @@ exports[`SearchPage Container renders correctly 1`] = `
       <li
         className="empty-message"
       >
-        No books here, search for something
+        noSearchResults
       </li>
     </ol>
   </div>

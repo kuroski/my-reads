@@ -1,0 +1,11 @@
+{
+  "addBook": "Add a Book",
+  "noSearchResults": "No books here, search for something else",
+  "searchQueryPlaceholder": "Search by title or author",
+  "close": "Close",
+  "somethingWhentWrong": "Something went wrong.",
+  "noShelfCreated": "Oops, no shelf created",
+  "emptyShelf": "No books on this shelf",
+  "moveTo": "Move to...",
+  "currentlyReading": "Currently Reading"
+}

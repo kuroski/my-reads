@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import T from 'i18n-react';
 
 const Book = props => {
   const onMove = e => {
@@ -33,7 +34,7 @@ const Book = props => {
         <div className="book-shelf-changer">
           <select onChange={onMove} value={props.selectedShelf}>
             <option value="none" disabled>
-              Move to...
+              {T.translate('moveTo')}
             </option>
             {renderedOptions}
           </select>

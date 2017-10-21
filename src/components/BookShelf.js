@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import T from 'i18n-react';
 import Book from './Book';
 
 const BookShelf = props => {
   const renderBooks = () => {
     if (!props.books || props.books.length === 0)
-      return <li className="empty-message">No books on this shelf</li>;
+      return <li className="empty-message">{T.translate('emptyShelf')}</li>;
 
     return props.books.map(book => (
       <li key={book.id}>

@@ -20,7 +20,7 @@ describe('SearchPage Container', () => {
     const wrapper = build();
     wrapper.instance().componentDidCatch('Critical error!', 'More info here');
     wrapper.update();
-    expect(wrapper.html()).toContain('Something went wrong.');
+    expect(wrapper.html()).toContain('somethingWhentWrong');
   });
 
   it('renders children if there isnt errors', () => {

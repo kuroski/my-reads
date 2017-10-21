@@ -1,6 +1,7 @@
 import React from 'react';
 import createReactClass from 'create-react-class';
 import { Link, Route } from 'react-router-dom';
+import T from 'i18n-react';
 import SearchPage from './SearchPage';
 import Shelves from '../components/Shelves';
 import { getAll, update } from '../api';
@@ -49,7 +50,7 @@ const App = createReactClass({
               </div>
 
               <div className="open-search">
-                <Link to="/search">Add a book</Link>
+                <Link to="/search">{T.translate('addBook')}</Link>
               </div>
             </div>
           )}

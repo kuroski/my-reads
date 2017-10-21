@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import T from 'i18n-react';
 import BookShelf from './BookShelf';
 
 const Shelves = props => {
@@ -9,7 +10,9 @@ const Shelves = props => {
 
   const renderBookShelves = () => {
     if (!props.shelves || props.shelves.length === 0)
-      return <div className="empty-message">Oops, no shelf created</div>;
+      return (
+        <div className="empty-message">{T.translate('noShelfCreated')}</div>
+      );
 
     return props.shelves.map(shelf => (
       <BookShelf

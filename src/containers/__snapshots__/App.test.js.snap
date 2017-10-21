@@ -35,7 +35,7 @@ exports[`Shelves Container renders App Container correctly 1`] = `
               <li
                 className="empty-message"
               >
-                No books on this shelf
+                emptyShelf
               </li>
             </ol>
           </div>
@@ -57,7 +57,7 @@ exports[`Shelves Container renders App Container correctly 1`] = `
               <li
                 className="empty-message"
               >
-                No books on this shelf
+                emptyShelf
               </li>
             </ol>
           </div>
@@ -79,7 +79,7 @@ exports[`Shelves Container renders App Container correctly 1`] = `
               <li
                 className="empty-message"
               >
-                No books on this shelf
+                emptyShelf
               </li>
             </ol>
           </div>
@@ -93,7 +93,7 @@ exports[`Shelves Container renders App Container correctly 1`] = `
         href="/search"
         onClick={[Function]}
       >
-        Add a book
+        addBook
       </a>
     </div>
   </div>
