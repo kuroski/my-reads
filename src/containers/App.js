@@ -19,20 +19,8 @@ const App = createReactClass({
   },
 
   onMove: async function(bookToChange, destinyShelf) {
-    await update(bookToChange, destinyShelf);
-
-    this.setState(prevState => {
-      let book = prevState.books.find(book => book.id === bookToChange.id);
-      if (book) book.shelf = destinyShelf;
-      else {
-        bookToChange.shelf = destinyShelf;
-        prevState.books.push(bookToChange);
-      }
-
-      return {
-        books: prevState.books
-      };
-    });
+    const books = await update(bookToChange, destinyShelf);
+    this.setState({ books });
   },
 
   render: function() {

@@ -4,7 +4,7 @@ import shallow from 'enzyme/shallow';
 import { MemoryRouter } from 'react-router-dom';
 import SearchPage from './SearchPage';
 import Book from '../components/Book';
-import { testBooks, mockResponse } from '../common/testData';
+import { testBooks, mockFetch } from '../common/testData';
 import { shelfState } from '../common/shelfState';
 import { searchTerms } from '../common/commonData';
 
@@ -16,15 +16,14 @@ describe('SearchPage Container', () => {
   };
 
   beforeAll(() => {
-    window.fetch = jest
-      .fn()
-      .mockImplementation(() =>
-        Promise.resolve(mockResponse(200, null, JSON.stringify(testBooks)))
-      );
     props = {
       shelves: [],
       onMove: jest.fn()
     };
+  });
+
+  beforeEach(() => {
+    window.fetch = mockFetch(testBooks);
   });
 
   it('renders correctly', () => {

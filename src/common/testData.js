@@ -1,6 +1,6 @@
 import { shelfState } from './shelfState';
 
-const testBooks = {
+export const testBooks = {
   books: [
     {
       title: 'Book Title 1',
@@ -29,7 +29,7 @@ const testBooks = {
   ]
 };
 
-const testShelves = {
+export const testShelves = {
   shelves: [
     {
       name: 'Currently Reading',
@@ -46,12 +46,7 @@ const testShelves = {
   ]
 };
 
-const jsonHeaders = new Headers({
-  Accept: 'application/json',
-  'Content-Type': 'application/json'
-});
-
-const mockResponse = (status, statusText, response) => {
+export const mockResponse = (status, statusText, response) => {
   return new window.Response(response, {
     status: status,
     statusText: statusText,
@@ -61,4 +56,10 @@ const mockResponse = (status, statusText, response) => {
   });
 };
 
-export { testBooks, testShelves, jsonHeaders, mockResponse };
+export const mockFetch = books => {
+  return jest
+    .fn()
+    .mockImplementation(() =>
+      Promise.resolve(mockResponse(200, null, JSON.stringify(books)))
+    );
+};
