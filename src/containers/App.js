@@ -31,7 +31,11 @@ const App = createReactClass({
         <Route
           path="/search"
           render={() => (
-            <SearchPage shelves={this.state.shelves} onMove={this.onMove} />
+            <SearchPage
+              shelves={this.state.shelves}
+              books={this.state.books}
+              onMove={this.onMove}
+            />
           )}
         />
         <Route

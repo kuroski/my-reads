@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import T from 'i18n-react';
+import { shelfState } from '../common/shelfState';
 
 const Book = props => {
   const onMove = e => {
@@ -16,6 +17,15 @@ const Book = props => {
       {shelf.name}
     </option>
   ));
+
+  const renderRemoveButton = shelf => {
+    if (shelf !== shelfState.NONE)
+      return (
+        <button className="book-remove" type="button" onClick={handleChange}>
+          x
+        </button>
+      );
+  };
 
   return (
     <div className="book">
@@ -42,9 +52,7 @@ const Book = props => {
       </div>
       <div className="book-title">{props.book.title}</div>
       <div className="book-authors">{props.book.authors.join(', ')}</div>
-      <button type="button" onClick={handleChange}>
-        x
-      </button>
+      {renderRemoveButton(props.selectedShelf)}
     </div>
   );
 };

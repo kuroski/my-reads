@@ -18,7 +18,8 @@ describe('SearchPage Container', () => {
   beforeAll(() => {
     props = {
       shelves: [],
-      onMove: jest.fn()
+      onMove: jest.fn(),
+      books: testBooks.books
     };
   });
 
@@ -32,7 +33,7 @@ describe('SearchPage Container', () => {
     const SearchPageTree = renderer
       .create(
         <MemoryRouter>
-          <SearchPage shelves={[]} onMove={() => {}} />
+          <SearchPage shelves={[]} onMove={() => {}} books={[]} />
         </MemoryRouter>
       )
       .toJSON();
@@ -96,5 +97,17 @@ describe('SearchPage Container', () => {
       expect(errorMessage.html()).toContain('noSearchResults');
       done();
     });
+  });
+
+  it('select book shelf option if the book is already added to the shelves', () => {
+    const wrapper = build();
+    wrapper.setState({
+      searchedBooks: testBooks.books
+    });
+    wrapper.update();
+
+    const firstBookRendered = wrapper.find(Book).first();
+    const firstBook = wrapper.instance().props.books[0];
+    expect(firstBookRendered.prop('selectedShelf')).toEqual(firstBook.shelf);
   });
 });

@@ -22,6 +22,12 @@ const SearchPage = createReactClass({
     this.setState({ searchedBooks: books, isLoading: false });
   },
 
+  setSelectedShelf: function(bookId) {
+    const book = this.props.books.find(entity => entity.id === bookId);
+    if (book) return book.shelf;
+    return 'none';
+  },
+
   renderBooks: function() {
     const books = this.state.searchedBooks;
 
@@ -35,7 +41,7 @@ const SearchPage = createReactClass({
         <Book
           book={book}
           onMove={this.props.onMove}
-          selectedShelf="none"
+          selectedShelf={this.setSelectedShelf(book.id)}
           shelves={this.props.shelves}
         />
       </li>
@@ -67,6 +73,7 @@ const SearchPage = createReactClass({
 });
 
 SearchPage.propTypes = {
+  books: PropTypes.array.isRequired,
   shelves: PropTypes.array.isRequired,
   onMove: PropTypes.func.isRequired
 };

@@ -87,6 +87,13 @@ describe('Book Component', () => {
     });
   });
 
+  it('hide remove button when shelve is "none"', () => {
+    props.selectedShelf = shelfState.NONE;
+    const wrapper = build();
+    const removeButton = wrapper.find('.book-remove');
+    expect(removeButton).toHaveLength(0);
+  });
+
   it('set option when "shelfSelected" prop is passed', () => {
     const wrapper = build();
     expect(wrapper.find('select').prop('value')).toEqual(props.selectedShelf);
