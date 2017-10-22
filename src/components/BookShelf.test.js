@@ -31,7 +31,8 @@ describe('BookShelf Container', () => {
 
   it('must show the BookShelf title', () => {
     const wrapper = build();
-    expect(wrapper.contains(props.name)).toBe(true);
+    const title = wrapper.find('Header').first();
+    expect(title.contains(props.name)).toBe(true);
   });
 
   it('renders a Book component when a book is passed', () => {

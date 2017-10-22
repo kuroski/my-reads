@@ -1,12 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Header, Segment, Message } from 'semantic-ui-react';
 import T from 'i18n-react';
 import Book from './Book';
 
 const BookShelf = props => {
   const renderBooks = () => {
     if (!props.books || props.books.length === 0)
-      return <li className="empty-message">{T.translate('emptyShelf')}</li>;
+      return (
+        <Message as="li" className="empty-message">
+          {T.translate('emptyShelf')}
+        </Message>
+      );
 
     return props.books.map(book => (
       <li key={book.id}>
@@ -21,11 +26,15 @@ const BookShelf = props => {
   };
 
   return (
-    <div className="bookshelf">
-      <h2 className="bookshelf-title">{props.name}</h2>
-      <div className="bookshelf-books">
-        <ol className="books-grid">{renderBooks()}</ol>
-      </div>
+    <div className="book-shelf">
+      <Header as="h2" attached="top">
+        {props.name}
+      </Header>
+      <Segment attached>
+        <div className="bookshelf-books">
+          <ol className="books-grid">{renderBooks()}</ol>
+        </div>
+      </Segment>
     </div>
   );
 };

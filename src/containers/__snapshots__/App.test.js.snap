@@ -19,69 +19,81 @@ exports[`Shelves Container renders App Container correctly 1`] = `
     >
       <div>
         <div
-          className="bookshelf"
+          className="book-shelf"
         >
           <h2
-            className="bookshelf-title"
+            className="ui top attached header"
           >
             Currently Reading
           </h2>
           <div
-            className="bookshelf-books"
+            className="ui attached segment"
           >
-            <ol
-              className="books-grid"
+            <div
+              className="bookshelf-books"
             >
-              <li
-                className="empty-message"
+              <ol
+                className="books-grid"
               >
-                emptyShelf
-              </li>
-            </ol>
+                <li
+                  className="ui message empty-message"
+                >
+                  emptyShelf
+                </li>
+              </ol>
+            </div>
           </div>
         </div>
         <div
-          className="bookshelf"
+          className="book-shelf"
         >
           <h2
-            className="bookshelf-title"
+            className="ui top attached header"
           >
             Want to Read
           </h2>
           <div
-            className="bookshelf-books"
+            className="ui attached segment"
           >
-            <ol
-              className="books-grid"
+            <div
+              className="bookshelf-books"
             >
-              <li
-                className="empty-message"
+              <ol
+                className="books-grid"
               >
-                emptyShelf
-              </li>
-            </ol>
+                <li
+                  className="ui message empty-message"
+                >
+                  emptyShelf
+                </li>
+              </ol>
+            </div>
           </div>
         </div>
         <div
-          className="bookshelf"
+          className="book-shelf"
         >
           <h2
-            className="bookshelf-title"
+            className="ui top attached header"
           >
             Read
           </h2>
           <div
-            className="bookshelf-books"
+            className="ui attached segment"
           >
-            <ol
-              className="books-grid"
+            <div
+              className="bookshelf-books"
             >
-              <li
-                className="empty-message"
+              <ol
+                className="books-grid"
               >
-                emptyShelf
-              </li>
-            </ol>
+                <li
+                  className="ui message empty-message"
+                >
+                  emptyShelf
+                </li>
+              </ol>
+            </div>
           </div>
         </div>
       </div>

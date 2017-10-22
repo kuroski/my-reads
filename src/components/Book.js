@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Button } from 'semantic-ui-react';
 import T from 'i18n-react';
 import { shelfState } from '../common/shelfState';
 
@@ -21,14 +22,20 @@ const Book = props => {
   const renderRemoveButton = shelf => {
     if (shelf !== shelfState.NONE)
       return (
-        <button className="book-remove" type="button" onClick={handleChange}>
-          x
-        </button>
+        <Button
+          icon="trash"
+          circular
+          color="red"
+          size="tiny"
+          className="book-remove"
+          onClick={handleChange}
+        />
       );
   };
 
   return (
     <div className="book">
+      {renderRemoveButton(props.selectedShelf)}
       <div className="book-top">
         <img
           src={
@@ -51,8 +58,9 @@ const Book = props => {
         </div>
       </div>
       <div className="book-title">{props.book.title}</div>
-      <div className="book-authors">{props.book.authors.join(', ')}</div>
-      {renderRemoveButton(props.selectedShelf)}
+      <div className="book-authors">
+        {props.book.authors && props.book.authors.join(', ')}
+      </div>
     </div>
   );
 };
@@ -61,7 +69,7 @@ Book.propTypes = {
   book: PropTypes.shape({
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    authors: PropTypes.array.isRequired,
+    authors: PropTypes.array,
     imageLinks: PropTypes.shape({
       thumbnail: PropTypes.string
     })
@@ -78,6 +86,7 @@ Book.propTypes = {
 
 Book.defaultProps = {
   book: {
+    authors: ['-'],
     imageLinks: {
       thumbnail: 'http://i.imgur.com/J5LVHEL.jpg'
     }

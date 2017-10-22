@@ -101,7 +101,7 @@ describe('Book Component', () => {
 
   it('must call "onMove" prop with "none" shelf when delete button is clicked', () => {
     const wrapper = build();
-    const select = wrapper.find('button');
+    const select = wrapper.find('Button');
 
     select.simulate('click');
 

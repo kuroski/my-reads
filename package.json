@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "add": "^2.0.6",
     "create-react-class": "^15.6.2",
     "enzyme": "^3.1.0",
     "enzyme-adapter-react-16": "^1.0.1",
@@ -18,7 +19,10 @@
     "react-dom": "^16.0.0",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.14",
-    "react-test-renderer": "^16.0.0"
+    "react-test-renderer": "^16.0.0",
+    "semantic-ui-css": "^2.2.12",
+    "semantic-ui-react": "^0.75.1",
+    "yarn": "^1.2.1"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,json,css}": [

@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import T from 'i18n-react';
 import { BrowserRouter } from 'react-router-dom';
+import 'semantic-ui-css/semantic.min.css';
 import './index.css';
 import App from './containers/App';
 import ErrorBoundary from './containers/ErrorBoundary';

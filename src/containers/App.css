@@ -11,11 +11,15 @@ body,
   background: white;
 }
 
+:root {
+  --main-color: #6435c9;
+}
+
 /* main page */
 
 .list-books-title {
   padding: 10px 0;
-  background: #2e7c31;
+  background: var(--main-color);
   text-align: center;
 }
 .list-books-title h1 {
@@ -25,7 +29,7 @@ body,
 }
 
 .list-books-content {
-  padding: 0 0 80px;
+  padding: 2rem;
   flex: 1;
 }
 
@@ -46,6 +50,10 @@ body,
   text-align: center;
 }
 
+.ui.menu:not(.vertical) .right.item {
+  flex: 1;
+}
+
 .open-search {
   position: fixed;
   right: 25px;
@@ -56,7 +64,7 @@ body,
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: #2e7d32;
+  background: var(--main-color);
   background-image: url('../icons/add.svg');
   background-repeat: no-repeat;
   background-position: center;
@@ -64,7 +72,6 @@ body,
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   font-size: 0;
 }
-
 /* search page */
 
 .search-books-bar {
@@ -78,7 +85,7 @@ body,
 }
 .search-books-input-wrapper {
   flex: 1;
-  background: #e9e;
+  background: var(--main-color);
 }
 .search-books-bar input {
   width: 100%;
@@ -123,6 +130,7 @@ body,
 }
 
 .book {
+  position: relative;
   width: 140px;
 }
 .book-title,
@@ -150,7 +158,7 @@ body,
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: #60ac5d;
+  background: var(--main-color);
   background-image: url('../icons/arrow-drop-down.svg');
   background-repeat: no-repeat;
   background-position: center;
@@ -176,6 +184,22 @@ body,
   font-size: 0.8em;
 }
 
+/* book shelf */
+.book-shelf {
+  margin-bottom: 2rem;
+}
+
+.book-shelf:last-child {
+  margin-bottom: 0;
+}
+
+.book-remove {
+  position: absolute;
+  z-index: 10;
+  top: 10px;
+  left: 5px;
+}
+
 /* LOADER */
 
 .loader {
@@ -188,7 +212,7 @@ body,
   display: inline-block;
   width: 5px;
   height: 20px;
-  background-color: #3498db;
+  background-color: var(--main-color);
   margin: 0 1.5px;
 }
 
