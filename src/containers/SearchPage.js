@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 import Book from '../components/Book';
 import Loader from '../components/Loader';
 import { search } from '../api';
-import { searchTerms } from '../common/commonData';
 
 const SearchPage = createReactClass({
   getInitialState: () => ({
@@ -15,8 +14,6 @@ const SearchPage = createReactClass({
   }),
 
   onSearch: async function(query) {
-    if (!searchTerms.includes(query)) return;
-
     this.setState({ isLoading: true });
     const books = await search(query);
     this.setState({ searchedBooks: books, isLoading: false });

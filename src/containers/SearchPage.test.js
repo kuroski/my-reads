@@ -85,6 +85,8 @@ describe('SearchPage Container', () => {
     const wrapper = build();
     const input = wrapper.find('input').first();
 
+    window.fetch = jest.fn().mockImplementationOnce(() => mockPromise([]));
+
     input.simulate('change', {
       target: { value: 'doesnt exist' }
     });
