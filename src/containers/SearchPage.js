@@ -2,6 +2,7 @@ import React from 'react';
 import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 import T from 'i18n-react';
+import { Debounce } from 'react-throttle';
 import { Link } from 'react-router-dom';
 import Book from '../components/Book';
 import Loader from '../components/Loader';
@@ -53,11 +54,13 @@ const SearchPage = createReactClass({
             {T.translate('close')}
           </Link>
           <div className="search-books-input-wrapper">
-            <input
-              type="text"
-              onChange={e => this.onSearch(e.target.value)}
-              placeholder={T.translate('searchQueryPlaceholder')}
-            />
+            <Debounce time="300" handler="onChange">
+              <input
+                type="text"
+                onChange={e => this.onSearch(e.target.value)}
+                placeholder={T.translate('searchQueryPlaceholder')}
+              />
+            </Debounce>
           </div>
         </div>
         <div className="search-books-results">

@@ -20,6 +20,7 @@
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.14",
     "react-test-renderer": "^16.0.0",
+    "react-throttle": "^0.3.0",
     "semantic-ui-css": "^2.2.12",
     "semantic-ui-react": "^0.75.1",
     "yarn": "^1.2.1"
