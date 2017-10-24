@@ -21,8 +21,12 @@ const App = createReactClass({
 
   onMove: async function(bookToChange, destinyShelf) {
     await update(bookToChange, destinyShelf);
-    const books = await getAll();
-    this.setState({ books });
+    bookToChange.shelf = destinyShelf;
+    this.setState({
+      books: this.state.books
+        .filter(book => book.id !== bookToChange.id)
+        .concat([bookToChange])
+    });
   },
 
   render: function() {
